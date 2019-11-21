@@ -301,17 +301,17 @@ export class App extends Component {
         },
       ],
       servicesDefaultRecord: {
-        vid: "Jeff's Jeep",
-        VIN: "ExampleVIN",
-        vehicleServicesArray: [
-          {
-            serviceID: "#001-IJ454",
-            odometer: "142000",
-            date: "2019/04/03",
-            serviceLocation: "Autobahn Mechanical and Electrical Services Canningvale",
-          },
-        ],
-      },
+          vid: "Jeff's Jeep",
+          VIN: "ExampleVIN",
+          vehicleServicesArray: [
+            {
+              serviceID: "#001-IJ454",
+              odometer: "142000",
+              date: "2019/04/03",
+              serviceLocation: "Autobahn Mechanical and Electrical Services Canningvale",
+            },
+          ],
+        },
 
       bookings: [
         {
@@ -692,7 +692,6 @@ export class App extends Component {
   // };
 
   editRecord = ( record, infoType, navigateBack ) => {
-    console.log("hey");
     console.log( "infoType", infoType );
     const _data = this.state[ infoType ];
     // get index of vehicle
@@ -705,8 +704,6 @@ export class App extends Component {
     // console.log("infoType", infoType);
     let _data = this.state[ infoType ];
     _data.push( record );
-    console.log("_data", _data);
-    console.log("record", record);
     this.setState( { [ infoType ]: _data }, navigateBack );
   };
 
@@ -748,42 +745,220 @@ export class App extends Component {
             }
           />
 
-          { this.state.pages.map( page =>
-            <Route
-              // path={["/edit/:vid", "/add/"]}
-              exact path={ `/${ page }/` }
-              render={
-                props =>
-                  <ShowTables
-                    { ...props }
-                    // vehicleHeadings={this.state.vehicleHeadings}
-                    columnHeadings={ this.state[ `${ page }Headings` ] }
-                    data={ this.state[ page ] }
-                    dataArrayName={ page }
-                    // dataArrayName={ `${page}` }
-                    deleteRecord={ this.deleteRecord }
-                  />
-              }
-            />
-          ) }
+          {/*<Route exact path="/services/"*/}
+          {/*       render={*/}
+          {/*         props =>*/}
+          {/*           <ShowVehicles*/}
+          {/*             { ...props }*/}
+          {/*             columnHeadings={ this.state.servicesHeadings }*/}
+          {/*             data={ this.state.services }*/}
+          {/*             dataArrayName={ "services" }*/}
+          {/*             deleteRecord={ this.deleteRecord }*/}
+          {/*           />*/}
+          {/*       }*/}
+          {/*/>*/}
 
-          { this.state.pages.map( page =>
-            <Route
-              exact path={ [ `/${ page }/:operation/:vid`, `/${ page }/:operation/` ] }
-              render={
-                props =>
-                  <EditAdd
-                    { ...props }
-                    columnHeadings={ this.state[ `${ page }Headings` ] }
-                    data={ this.state[ page ] } // this is so that the vehicle can be retrieved by it's vid in the URL
-                    dataArrayName={ page }
-                    editRecord={ this.editRecord }
-                    addRecord={ this.addRecord }
-                    dataDefaultRecord={ this.state[ `${ page }DefaultRecord` ] } // this is for the add form
-                  />
-              }
-            />
-          ) }
+          {
+            this.state.pages.map( page =>
+              <Route
+                // path={["/edit/:vid", "/add/"]}
+                exact path={ `/${ page }/` }
+                render={
+                  props =>
+                    <ShowTables
+                      { ...props }
+                      // vehicleHeadings={this.state.vehicleHeadings}
+                      columnHeadings={ this.state[ `${ page }Headings` ] }
+                      data={ this.state[ page ] }
+                      dataArrayName={ page }
+                      // dataArrayName={ `${page}` }
+                      deleteRecord={ this.deleteRecord }
+                    />
+                }
+              />
+            )
+          }
+          <Route
+            // path={["/edit/:vid", "/add/"]}
+            path={ [ "/vehicles/edit/:vid", "/vehicles/add/" ] }
+            render={
+              props =>
+                <EditAdd
+                  { ...props }
+                  // vehicleHeadings={this.state.vehicleHeadings}
+                  columnHeadings={ this.state.vehicleHeadings }
+                  data={ this.state.vehicles }
+                  // dataArrayName={ page }
+                  editRecord={ this.editRecord }
+                  addRecord={ this.addRecord }
+                  defaultRecord={ this.state.defaultVehicle }
+                />
+            }
+          />
+
+          {/*<Switch>*/ }
+          {/*  <Route exact path="/vehicles/"*/ }
+          {/*         render={*/ }
+          {/*           props =>*/ }
+          {/*             <ShowVehicles*/ }
+          {/*               { ...props }*/ }
+          {/*               columnHeadings={ this.state.vehicleHeadings }*/ }
+          {/*               data={ this.state.vehicles }*/ }
+          {/*               dataArrayName={ "vehicles" }*/ }
+          {/*               deleteRecord={ this.deleteRecord }*/ }
+          {/*             />*/ }
+          {/*         }*/ }
+          {/*  />*/ }
+          {/*  <Route exact path="/services/"*/ }
+          {/*         render={*/ }
+          {/*           props =>*/ }
+          {/*             <ShowVehicles*/ }
+          {/*               { ...props }*/ }
+          {/*               columnHeadings={ this.state.servicesHeadings }*/ }
+          {/*               data={ this.state.services }*/ }
+          {/*               dataArrayName={ "services" }*/ }
+          {/*               deleteRecord={ this.deleteRecord }*/ }
+          {/*             />*/ }
+          {/*         }*/ }
+          {/*  />*/ }
+          {/*  <Route exact path="/bookings/"*/ }
+          {/*         render={*/ }
+          {/*           props =>*/ }
+          {/*             <ShowVehicles*/ }
+          {/*               { ...props }*/ }
+          {/*               columnHeadings={ this.state.bookingsHeadings }*/ }
+          {/*               data={ this.state.bookings }*/ }
+          {/*               dataArrayName={ "bookings" }*/ }
+          {/*               deleteRecord={ this.deleteRecord }*/ }
+          {/*             />*/ }
+          {/*         }*/ }
+          {/*  />*/ }
+          {/*  <Route exact path="/journeys/"*/ }
+          {/*         render={*/ }
+          {/*           props =>*/ }
+          {/*             <ShowVehicles*/ }
+          {/*               { ...props }*/ }
+          {/*               columnHeadings={ this.state.journeysHeadings }*/ }
+          {/*               data={ this.state.journeys }*/ }
+          {/*               dataArrayName={ "journeys" }*/ }
+          {/*               deleteRecord={ this.deleteRecord }*/ }
+          {/*             />*/ }
+          {/*         }*/ }
+          {/*  />*/ }
+          {/*  <Route exact path="/refuels/"*/ }
+          {/*         render={*/ }
+          {/*           props =>*/ }
+          {/*             <ShowVehicles*/ }
+          {/*               { ...props }*/ }
+          {/*               columnHeadings={ this.state.refuelsHeadings }*/ }
+          {/*               data={ this.state.refuels }*/ }
+          {/*               dataArrayName={ "refuels" }*/ }
+          {/*               deleteRecord={ this.deleteRecord }*/ }
+          {/*             />*/ }
+          {/*         }*/ }
+          {/*  />*/ }
+
+          {/*EditAdd*/ }
+
+          {/*<Route*/ }
+          {/*  // path={["/edit/:vid", "/add/"]}*/ }
+          {/*  path={ [ "/edit/:vid", "/add/" ] }*/ }
+          {/*  render={*/ }
+          {/*    props =>*/ }
+          {/*      <EditAdd*/ }
+          {/*        { ...props }*/ }
+          {/*        // vehicleHeadings={this.state.vehicleHeadings}*/ }
+          {/*        columnHeadings={ this.state.vehicleHeadings }*/ }
+          {/*        data={ this.state.vehicles }*/ }
+          {/*        editRecord={ this.editRecord }*/ }
+          {/*        addRecord={ this.addRecord }*/ }
+          {/*        defaultRecord={ this.state.defaultVehicle }*/ }
+          {/*      />*/ }
+          {/*  }*/ }
+          {/*/>*/ }
+
+
+          {/*{*/ }
+          {/*  this.state.pages.map(page =>*/ }
+          {/*    <Route*/ }
+          {/*      // path={["/edit/:vid", "/add/"]}*/ }
+          {/*      path={ [ `${page}/:operation/:vid`, `${page}/:operation/` ] }*/ }
+          {/*      render={*/ }
+          {/*        props =>*/ }
+          {/*          <EditAdd*/ }
+          {/*            { ...props }*/ }
+          {/*            // vehicleHeadings={this.state.vehicleHeadings}*/ }
+          {/*            columnHeadings={ this.state[`${page}Headings`] }*/ }
+          {/*            data={ this.state[page] }*/ }
+          {/*            dataArrayName={page}*/ }
+          {/*            editRecord={ this.editRecord }*/ }
+          {/*            addRecord={ this.addRecord }*/ }
+          {/*            defaultRecord={ this.state[`${page}DefaultRecord`] }*/ }
+          {/*          />*/ }
+          {/*      }*/ }
+          {/*    />*/ }
+          {/*  )*/ }
+          {/*}*/ }
+
+
+          {/*{*/ }
+          {/*  this.state.pages.map(page =>*/ }
+          {/*    <Route*/ }
+          {/*      // path={["/edit/:vid", "/add/"]}*/ }
+          {/*      path={ [ `${page.dataArrayName}/:operation/:vid`, `${page.dataArrayName}/:operation/` ] }*/ }
+          {/*      render={*/ }
+          {/*        props =>*/ }
+          {/*          <EditAdd*/ }
+          {/*            { ...props }*/ }
+          {/*            // vehicleHeadings={this.state.vehicleHeadings}*/ }
+          {/*            columnHeadings={ this.state[`${page.recordName}Headings`] }*/ }
+          {/*            data={ this.state[page.dataArrayName] }*/ }
+          {/*            dataArrayName={page.dataArrayName}*/ }
+          {/*            editRecord={ this.editRecord }*/ }
+          {/*            addRecord={ this.addRecord }*/ }
+          {/*            defaultRecord={ this.state[`default${page.recordNameCapitalized}`] }*/ }
+          {/*          />*/ }
+          {/*      }*/ }
+          {/*    />*/ }
+          {/*  )*/ }
+          {/*}*/ }
+
+
+          {/*<Route*/}
+          {/*  // path={["/edit/:vid", "/add/"]}*/}
+          {/*  path={ [ "/edit/:vid", "/add/" ] }*/}
+          {/*  render={*/}
+          {/*    props =>*/}
+          {/*      <EditAdd*/}
+          {/*        { ...props }*/}
+          {/*        // vehicleHeadings={this.state.vehicleHeadings}*/}
+          {/*        columnHeadings={ this.state.vehicleHeadings }*/}
+          {/*        data={ this.state.vehicles }*/}
+          {/*        editRecord={ this.editRecord }*/}
+          {/*        addRecord={ this.addRecord }*/}
+          {/*        defaultRecord={ this.state.defaultVehicle }*/}
+          {/*      />*/}
+          {/*  }*/}
+          {/*/>*/}
+
+
+          {/*<Route*/ }
+          {/*    // path={["/edit/:vid", "/add/"]}*/ }
+          {/*    path={["/edit/:vid", "/add"]}*/ }
+          {/*    render={*/ }
+          {/*      props =>*/ }
+          {/*          <EditAdd*/ }
+          {/*              {...props}*/ }
+          {/*              // vehicleHeadings={this.state.vehicleHeadings}*/ }
+          {/*              columnHeadings={this.state.vehicleHeadings}*/ }
+          {/*              data={this.state.vehicles}*/ }
+          {/*              editRecord={this.editRecord}*/ }
+          {/*              addRecord={this.addRecord}*/ }
+          {/*              defaultRecord={this.state.defaultVehicle}*/ }
+          {/*          />*/ }
+          {/*    }*/ }
+          {/*/>*/ }
+
 
           {/*</Switch>*/ }
         </div>
