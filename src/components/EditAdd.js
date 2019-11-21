@@ -51,7 +51,6 @@ export class EditAdd extends Component {
   onSubmit = ( e ) => {
     e.preventDefault();
 
-    console.log("1");
     // validation
     if ( this.props.match.params.operation === "add" ) {
       // blank vid
@@ -71,20 +70,13 @@ export class EditAdd extends Component {
         alert( "Sorry, your record must have a unique VIN." );
       }
       else {
-        console.log("2");
         // call addRecord on App.js, then navigate to "/vehicles/" (ShowData) AFTER the setState in App.js has finished by using the setStates callback
-        this.props.addRecord( this.state.record, this.props.dataArrayName, () => this.props.history.push( `/vehicles/` ) );
+        this.props.addRecord( this.state.record, this.props.dataArrayName, () => this.props.history.push( `/${this.props.dataArrayName}/` ) );
       }
     } else {
-      console.log("3");
       // call editRecord on App.js, then navigate to "/vehicles/" (ShowData) AFTER the setState in App.js has finished by using the setStates callback
-      this.props.editRecord( this.state.record, this.props.dataArrayName, () => this.props.history.push( `/vehicles/` ) );
+      this.props.editRecord( this.state.record, this.props.dataArrayName, () => this.props.history.push( `/${this.props.dataArrayName}/` ) );
     }
-  };
-
-// TODO: fix the edit script so that the array item is replaced/overwritten, NOT removed
-  delete = ( e, index ) => {
-    this.setState( { data: this.state.data.slice( 0, index ).concat( this.state.data.slice( index + 1 ) ) } );
   };
 
   onReset = ( e ) => {
@@ -159,7 +151,7 @@ export class EditAdd extends Component {
             Submit
           </MDBBtn>
           <MDBBtn
-            onClick={ () => this.props.history.push( "/vehicles/" ) }
+            onClick={ () => this.props.history.push( `/${this.props.dataArrayName}/` ) }
             color="danger">
             Cancel
           </MDBBtn>

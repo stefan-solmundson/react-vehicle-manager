@@ -666,30 +666,6 @@ export class App extends Component {
       return ( { vehicles } );
     } );
   };
-  // old version
-  // deleteVehicle = (e, index) => {
-  //   this.setState({vehicles: this.state.vehicles.slice(0, index).concat(this.state.vehicles.slice(index + 1))});
-  // };
-
-  // delete( id ) {
-  //     firebase.firestore().collection( 'boards' )
-  //         .doc( id ).delete().then( () => {
-  //         console.log( "Document successfully deleted!" );
-  //         this.props.history.push( "/vehicles/" );
-  //     } ).catch( ( error ) => {
-  //         console.error( "Error removing document: ", error );
-  //     });
-  // }
-
-  // editRecord = (record, infoType, navigateBack) => {
-  //   this.setState(prevState => {
-  //     const {infoType} = prevState;
-  //     const indexOfRecord = infoType.findIndex(v => v.vid === record.vid);
-  //     infoType[indexOfRecord] = record;
-  //
-  //     return ({infoType});
-  //   }, navigateBack);
-  // };
 
   editRecord = ( record, infoType, navigateBack ) => {
     console.log("hey");
@@ -716,19 +692,7 @@ export class App extends Component {
     this.setState( { [ infoType ]: this.state.vehicles.slice( 0, _indexOfRecord ).concat( this.state.vehicles.slice( _indexOfRecord + 1 ) ) } );
   };
 
-  // addRecord = (vehicle, callback) => {
-  //   let _vehicles = this.state.vehicles;
-  //   _vehicles.push(vehicle);
-  //   this.setState({vehicles: _vehicles}, callback);
-  // };
-
-  addVehicleServiceRecord = ( vehicle, callback ) => {
-
-  };
-
   render() {
-
-
     if ( this.state.vehicles == null ) {
       return (
         <div>Loading Data, setting states</div>
@@ -736,7 +700,6 @@ export class App extends Component {
     } else {
       return (
         <div>
-          {/*<p>test</p>*/ }
           <Route
             exact path={ [ "/vehicles/", "/services/", "/bookings/", "/journeys/", "/refuels/" ] }
             render={
@@ -756,11 +719,9 @@ export class App extends Component {
                 props =>
                   <ShowTables
                     { ...props }
-                    // vehicleHeadings={this.state.vehicleHeadings}
                     columnHeadings={ this.state[ `${ page }Headings` ] }
                     data={ this.state[ page ] }
                     dataArrayName={ page }
-                    // dataArrayName={ `${page}` }
                     deleteRecord={ this.deleteRecord }
                   />
               }
@@ -784,10 +745,7 @@ export class App extends Component {
               }
             />
           ) }
-
-          {/*</Switch>*/ }
         </div>
-
       )
     }
   }
