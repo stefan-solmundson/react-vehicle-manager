@@ -8,6 +8,7 @@ import {Switch} from "react-router";
 import {ShowTables} from "./components/ShowTables";
 import {Home} from "./components/Home";
 import {Services} from "./components/Services";
+import firebase from "./Firebase";
 
 
 import {MDBBtn, MDBBadge, MDBIcon, MDBDataTable, MDBContainer} from 'mdbreact';
@@ -23,10 +24,12 @@ export class App extends Component {
 
   constructor(props) {
     /* properties: blank... */
-
     super(props);
-    let _vehicles;
     // TODO: PUT A LOADER IN HERE FOR THE FIREBASE DATA
+    this.firebaseCollection = firebase.firestore().collection('vehicles');
+    this.unsubscribe = null;
+
+    let _vehicles;
     _vehicles = [
       {
         vehicleID: "Jeff's Jeep",
@@ -432,7 +435,7 @@ export class App extends Component {
           field: "dateLastUpdated",
         },
       ],
-      journeysDefaultRecord:  {
+      journeysDefaultRecord: {
         vehicleID: "Carol's 2nd Corolla",
         VIN: "ExampleVIN",
         bookingID: "002-EE037",
@@ -457,7 +460,7 @@ export class App extends Component {
           fuelPrice: 1.55,
           dateCreated: "2019/04/06",
           dateLastUpdated: "2019/04/06",
-            },
+        },
         {
           vehicleID: "Jeff's Jeep",
           VIN: "ExampleVIN",
@@ -536,25 +539,52 @@ export class App extends Component {
     };
   }
 
-  // console.log("props.vehicle in constructor", props.history.vehicle);
-  // console.log(this.state.vehicles);
-  // console.log(this.props.location.vehicles);
-// };
+  // Loads vehicle data when the collection is updated // !!! SPECIFIC
+  onCollectionUpdate = (querySnapshot) => {
+    // doc : document : record
+    //
+    const _data = [];
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data());
+      _data.push({});
+    });
+    this.setState({vehicles: _data}); // !!! SPECIFIC
+  };
 
-  componentDidMount(): void {
+  componentDidMount() {
+    this.unsubscribe = this.firebaseCollection.onSnapshot(this.onCollectionUpdate);
   }
 
-  // deleteVehicle = (vehicle) => {
-  //   this.setState(prevState => {
-  //     let {vehicles} = prevState;
-  //     const indexOfVehicle = vehicles.findIndex(v => v.vehicleID === vehicle.vehicleID);
-  //     vehicles = this.state.vehicles.slice(0, indexOfVehicle).concat(this.state.vehicles.slice(indexOfVehicle + 1));
-  //
-  //     return ({vehicles});
-  //   });
-  // };
-
   editRecord = (record, recordIdField, dataArrayName, navigateBack) => {
+    Object.keys(record).map(field => console.log(record[field]));
+    // Object.keys(record).map(field => field: record[field])
+    // console.log(
+    //     Object.keys(record).map(field => `${field}: ${record[field]},\n`)
+    // );
+
+    // firebase operation
+    // Add a new document in collection "cities"
+    // firebase.firestore().collection(dataArrayName).doc("LA").set({
+    firebase.firestore().collection("vehicles").doc("LA").set({
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA"
+    })
+        .then(function() {
+          console.log("Document successfully written!");
+        })
+        .catch(function(error) {
+          console.error("Error writing document: ", error);
+        });
+
+
+    // this.firebaseCollection.set({bob: "hello"}
+        // Object.keys(record).map(field => `${field}: ${record[field]},\n`)
+        // Object.keys(record).map(field => field: record[field]);
+    // );
+
+    console.log("code executed past 'then()'.");
+
     // console.log("dataArrayName", dataArrayName);
     const _data = this.state[dataArrayName];
     // get index of vehicle
@@ -564,11 +594,17 @@ export class App extends Component {
   };
 
   addRecord = (record, dataArrayName, navigateBack) => {
+    // firebase operation
+    this.firebaseCollection.add({
+      record,
+    }).then();
+
+    // local operation
     // console.log("dataArrayName", dataArrayName);
     let _data = this.state[dataArrayName];
     _data.push(record);
-    console.log("_data", _data);
-    console.log("record", record);
+    // console.log("_data", _data);
+    // console.log("record", record);
     this.setState({[dataArrayName]: _data}, navigateBack);
   };
 

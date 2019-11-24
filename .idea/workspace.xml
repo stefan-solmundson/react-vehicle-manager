@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="846ed461-9160-4cbb-8e00-cf06c6aa7292" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mdbreact-modified.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mdbreact-modified.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ShowVehicles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 5 before diegos help.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 7 before merge with all other informationTypes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App - backup 8 before impletmenting map for EditAdd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditAdd - backup 2 before diegos help.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditAdd - backup 3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditAdd - backup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowVehicles - backup 2 before merge with all other informationTypes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowVehicles - backup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowVehicles - class.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
