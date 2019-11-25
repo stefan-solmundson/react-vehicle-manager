@@ -3,6 +3,7 @@
 
 import React, {Component} from 'react';
 import {MDBBtn, MDBContainer, MDBRow} from "mdbreact";
+import firebase from "../Firebase";
 
 export class EditAdd extends Component {
 
@@ -63,17 +64,16 @@ export class EditAdd extends Component {
     if (this.props.match.params.operation === "add") {
       // The record-types ID Field can NOT be a duplicate of another
       if (this.props.data.find(element => element[this.props.recordIdFieldName] === this.state.record[this.props.recordIdFieldName]))
-        return(alert("Sorry, your record must have a unique " +
+        return (alert("Sorry, your record must have a unique " +
             this.props.dataArrayName.charAt(0).toUpperCase() + this.props.dataArrayName.substring(1, this.props.dataArrayName.length - 1) + " ID" +
             "."));
 
       // add the record to the data-array
-      this.props.addRecord(this.state.record, this.props.dataArrayName, () => this.props.history.push(`/${this.props.dataArrayName}/`));
-    }
-    else {
-      // update the record in the data-array
-      // call editRecord on App.js, then navigate to "/vehicles/" (ShowData) AFTER the setState in App.js has finished by using the setStates callback
-      this.props.editRecord(this.state.record, this.props.recordIdFieldName, this.props.dataArrayName, () => this.props.history.push(`/${this.props.dataArrayName}/`));
+      this.props.addRecord(this.state.record, this.props.recordIdFieldName, this.props.dataArrayName, () => this.props.history.push(`/${this.props.dataArrayName}/`));
+    } else {
+        // update the record in the data-array
+        // call editRecord on App.js, then navigate to "/vehicles/" (ShowData) AFTER the setState in App.js has finished by using the setStates callback
+        this.props.editRecord(this.state.record, this.props.recordIdFieldName, this.props.dataArrayName, () => this.props.history.push(`/${this.props.dataArrayName}/`));
     }
   };
 

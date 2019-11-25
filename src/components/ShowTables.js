@@ -15,7 +15,7 @@ export class ShowTables extends Component {
   render() {
     const {columnHeadings, data, dataArrayName, recordIdFieldName, history} = this.props;
 
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
     // console.log("", );
 
     return (

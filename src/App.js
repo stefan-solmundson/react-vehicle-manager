@@ -25,8 +25,18 @@ export class App extends Component {
   constructor(props) {
     /* properties: blank... */
     super(props);
+    const _pages = ["vehicles", "services", "bookings", "journeys", "refuels"];
+
+    this.offline = false;
+
     // TODO: PUT A LOADER IN HERE FOR THE FIREBASE DATA
-    this.firebaseCollection = firebase.firestore().collection('vehicles');
+    this.firebaseCollections = [];
+    _pages.map((page, index) => {
+      this.firebaseCollections[index] = firebase.firestore().collection(page);
+    });
+    // this.firebaseCollections = [firebase.firestore().collection('vehicles')];
+
+    // this.firebaseCollection = firebase.firestore().collection('boards');
     this.unsubscribe = null;
 
     let _vehicles;
@@ -88,7 +98,7 @@ export class App extends Component {
 
       // IMPORTANT : make sure all page-specific data contains their
       // associated page's name in their own names
-      pages: ["vehicles", "services", "bookings", "journeys", "refuels"],
+      pages: _pages,
 
       vehicles: _vehicles,
       vehiclesHeadings: [
@@ -539,81 +549,112 @@ export class App extends Component {
     };
   }
 
-  // Loads vehicle data when the collection is updated // !!! SPECIFIC
-  onCollectionUpdate = (querySnapshot) => {
-    // doc : document : record
-    //
-    const _data = [];
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-      _data.push({});
-    });
-    this.setState({vehicles: _data}); // !!! SPECIFIC
-  };
+  componentDidMount(): void {
+    if (this.offline === false) {
+      // Receives calls when the Firebase-source-data is updated & automatically updates the applications data
+      this.firebaseCollections.map((firebaseCollection, index) => {
+        console.log(firebaseCollection);
+        // .onSnapshot reloads a firebase collection when it is updated
+        this.unsubscribe = firebaseCollection.onSnapshot(docSnapshot => {
+          // doc : document : record
 
-  componentDidMount() {
-    this.unsubscribe = this.firebaseCollection.onSnapshot(this.onCollectionUpdate);
+          // FIREBASE SORTING:
+          // Firebase-collections/arrays are sorted from newest to oldest
+          // &
+          // Firebase-documents/object-properties are sorted by firstly by capitals & secondly alphabetically
+          // -
+          // 'vehiclesHeadings' is an array, so it will maintain a NON-alphabetical order in Firebase    *(if uploaded properly)
+          const _data = [];
+          docSnapshot.forEach((doc) => {
+            // console.dir(doc);
+            // console.dir(doc.data());
+            let _record = {};
+            // this.state.vehiclesHeadings.map(e => {
+            this.state[this.state.pages[index] + "Headings"].map(e => { // this.state.pages[index] === dataArrayName
+              // console.log(e);
+              _record[e.field] = doc.data()[e.field];
+              // console.log(_record[e.field]);
+            });
+            _data.push(_record);
+          });
+          // console.log("_data", _data);
+          this.setState({[this.state.pages[index]]: _data});
+        });
+      });
+    }
+
+    // // Upload locally defined to Firebase Database
+    // this.state.pages.map(_page => {
+    //   console.log(_page);
+    //   console.log(this.state[_page]);
+    //   this.state[_page].map(_record => {
+    //     // updates the firebase record
+    //     firebase.firestore().collection(_page).doc(_record[_page.substring(0, _page.length-1) + "ID"]).set(_record)
+    //         .then(function () {
+    //           console.log("Document successfully written!");
+    //         })
+    //         .catch(function (error) {
+    //           console.error("Error writing document: ", error);
+    //         })
+    //   });
+    // });
   }
 
   editRecord = (record, recordIdField, dataArrayName, navigateBack) => {
-    Object.keys(record).map(field => console.log(record[field]));
-    // Object.keys(record).map(field => field: record[field])
-    // console.log(
-    //     Object.keys(record).map(field => `${field}: ${record[field]},\n`)
-    // );
+    // Object.keys(record).map(field => console.log(record[field]));
 
-    // firebase operation
-    // Add a new document in collection "cities"
-    // firebase.firestore().collection(dataArrayName).doc("LA").set({
-    firebase.firestore().collection("vehicles").doc("LA").set({
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
-    })
-        .then(function() {
-          console.log("Document successfully written!");
-        })
-        .catch(function(error) {
-          console.error("Error writing document: ", error);
-        });
-
-
-    // this.firebaseCollection.set({bob: "hello"}
-        // Object.keys(record).map(field => `${field}: ${record[field]},\n`)
-        // Object.keys(record).map(field => field: record[field]);
-    // );
-
-    console.log("code executed past 'then()'.");
-
-    // console.log("dataArrayName", dataArrayName);
-    const _data = this.state[dataArrayName];
-    // get index of vehicle
-    const _indexOfRecord = _data.findIndex(element => element[recordIdField] === record[recordIdField]);
-    _data[_indexOfRecord] = record;
-    this.setState({[dataArrayName]: _data}, navigateBack);
+    if (this.offline === false) {
+      // updates the firebase record
+      firebase.firestore().collection(dataArrayName).doc(record[recordIdField]).set(record)
+          .then(function () {
+            console.log("Document successfully written!");
+          })
+          .catch(function (error) {
+            console.error("Error writing document: ", error);
+          });
+    } else {
+      // updates the local record
+      // console.log("dataArrayName", dataArrayName);
+      const _data = this.state[dataArrayName];
+      // get index of vehicle
+      const _indexOfRecord = _data.findIndex(element => element[recordIdField] === record[recordIdField]);
+      _data[_indexOfRecord] = record;
+      this.setState({[dataArrayName]: _data}, navigateBack)
+    }
   };
 
-  addRecord = (record, dataArrayName, navigateBack) => {
-    // firebase operation
-    this.firebaseCollection.add({
-      record,
-    }).then();
-
-    // local operation
-    // console.log("dataArrayName", dataArrayName);
-    let _data = this.state[dataArrayName];
-    _data.push(record);
-    // console.log("_data", _data);
-    // console.log("record", record);
-    this.setState({[dataArrayName]: _data}, navigateBack);
+  addRecord = (record, recordIdField, dataArrayName, navigateBack) => {
+    if (this.offline === false) {
+      // Creates the firebase record
+      firebase.firestore().collection(dataArrayName).doc(record[recordIdField]).set(record)
+          .then(function () {
+            console.log("Document successfully written!");
+          })
+          .catch(function (error) {
+            console.error("Error writing document: ", error);
+          });
+    } else {
+      // adds a local record
+      // console.log("dataArrayName", dataArrayName);
+      let _data = this.state[dataArrayName];
+      _data.push(record);
+      // console.log("_data", _data);
+      // console.log("record", record);
+      this.setState({[dataArrayName]: _data}, navigateBack);
+    }
   };
 
   deleteRecord = (record, recordIdField, dataArrayName) => {
     // console.log("dataArrayName", dataArrayName);
     // console.log("recordIdField", recordIdField);
-    const _indexOfRecord = this.state[dataArrayName].findIndex(element => element[recordIdField] === record[recordIdField]);
-    // console.log("_indexOfRecord", _indexOfRecord);
-    this.setState({[dataArrayName]: this.state[dataArrayName].slice(0, _indexOfRecord).concat(this.state[dataArrayName].slice(_indexOfRecord + 1))});
+    if (this.offline === false) {
+      // TODO: make the offline remove system work
+    }
+    else {
+      const _indexOfRecord = this.state[dataArrayName].findIndex(element => element[recordIdField] === record[recordIdField]);
+      // console.log("_indexOfRecord", _indexOfRecord);
+      this.setState({[dataArrayName]: this.state[dataArrayName].slice(0, _indexOfRecord).concat(this.state[dataArrayName].slice(_indexOfRecord + 1))});
+    }
   };
 
   render() {

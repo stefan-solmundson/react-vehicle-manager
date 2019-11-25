@@ -4,6 +4,10 @@
     <list default="true" id="846ed461-9160-4cbb-8e00-cf06c6aa7292" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShowTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowTables.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +51,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/Downloads/react-vehicles-stefan-master/src/App.js" />
     <property name="two.files.diff.last.used.folder" value="$USER_HOME$/Downloads/react-vehicles-stefan-master/src" />
   </component>
@@ -107,6 +111,7 @@
       <workItem from="1574248129512" duration="12444000" />
       <workItem from="1574341640871" duration="3086000" />
       <workItem from="1574427924990" duration="13770000" />
+      <workItem from="1574668228148" duration="9303000" />
     </task>
     <servers />
   </component>
