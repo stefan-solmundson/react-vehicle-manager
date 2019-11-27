@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import {MDBBtn, MDBContainer, MDBRow} from "mdbreact";
-import firebase from "../Firebase";
+import firebase from "../../Firebase";
 
 export class EditAdd extends Component {
 
@@ -56,9 +56,9 @@ export class EditAdd extends Component {
     // no field can be blank
     Object.keys(this.state.record).map((field, index) => {
       if (this.state.record[field] == null) {
-        return (alert(`Sorry, your record's ${this.props.columnHeadings[index]} cannot be blank.`));
+        alert(`Sorry, your record's ${this.props.columnHeadings[index]} cannot be blank.`);
       }
-      return (console.log(field + " was not blank."))
+      // console.log(field + " was not blank.")
     });
 
     if (this.props.match.params.operation === "add") {

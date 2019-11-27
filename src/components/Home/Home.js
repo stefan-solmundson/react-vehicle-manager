@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBContainer, MDBListGroup, MDBListGroupItem } from "mdbreact";
 import { Link } from "react-router-dom";
 import { Button, Table } from "reactstrap";
-import EditAdd from "./EditAdd";
-import { ShowTables } from "./ShowTables";
+import EditAdd from "../EditAdd/EditAdd";
+import { ShowTables } from "../ShowTables/ShowTables";
 
 export class Home extends Component {
   state = {};

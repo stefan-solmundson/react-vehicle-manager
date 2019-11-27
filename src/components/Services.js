@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {MDBBtn, MDBContainer, MDBListGroup, MDBListGroupItem} from "mdbreact";
 import {Link} from "react-router-dom";
 import {Button, Table} from "reactstrap";
-import EditAdd from "./EditAdd";
+import EditAdd from "./EditAdd/EditAdd";
 
 export class Services extends Component {
   // state = {};

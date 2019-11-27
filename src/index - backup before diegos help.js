@@ -9,7 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 //
-import EditAdd from './components/EditAdd';
+import EditAdd from './components/EditAdd/EditAdd';
 import SelectEdit from './components/Search';
 // import Create from './Components/Create';
 // import Show from './Components/Show';
