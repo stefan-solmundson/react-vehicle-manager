@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="846ed461-9160-4cbb-8e00-cf06c6aa7292" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/LocalData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__snapshots__/App.test.js.snap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PrintDetails/PrintDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__snapshots__/App.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/__snapshots__/App.test.js.snap" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +119,7 @@
       <workItem from="1574341640871" duration="3086000" />
       <workItem from="1574427924990" duration="13770000" />
       <workItem from="1574668228148" duration="25886000" />
-      <workItem from="1574905849508" duration="24174000" />
+      <workItem from="1574905849508" duration="26066000" />
     </task>
     <servers />
   </component>

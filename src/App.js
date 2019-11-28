@@ -271,10 +271,6 @@ export class App extends Component {
     return ( _totalDistance );
   };
 
-  // return4 = () => {
-  //   return ( 4 );
-  // };
-
   /**
    * Fuel Efficiency    *taking into account second-hand vehicles
    * @param vehicle
@@ -297,8 +293,8 @@ export class App extends Component {
    * @param vehicle
    * @returns {number}
    */
-  totalServices = ( vehicle ) => {
-    return ( this.state.services.filter( service => service.vehicleID === vehicle.vehicleID ).length );
+  totalServices = ( record ) => {
+    return ( this.state.services.filter( service => service.vehicleID === record.vehicleID ).length );
   };
 
   /**
@@ -403,10 +399,6 @@ export class App extends Component {
   };
 
   render() {
-    // console.log(this.totalDistance(this.state.vehicles[0]));
-    // console.log(this.fuelEfficiency(this.state.vehicles[0]) + " L/100km");
-    // console.log(this.totalServices(this.state.vehicles[0]));
-
     // let testData = "vehicles";
     // console.log( this.printDetails( this.state.vehicles[ 0 ] ) );
     // console.log( this.state );
@@ -433,19 +425,6 @@ export class App extends Component {
             }
           />
 
-          {/*{<Route*/}
-          {/*  exact path={ [ `/vehicles//:vehicleID/print_details` ] }*/}
-          {/*  render={*/}
-          {/*    props =>*/}
-          {/*      <PrintDetails*/}
-          {/*        { ...props }*/}
-          {/*        data={ this.state.vehicles}*/}
-          {/*        dataArrayName="vehicles"*/}
-          {/*        printDetails={ this.printDetails } // this is for the add form*/}
-          {/*      />*/}
-          {/*  }*/}
-          {/*/>*/}
-
           { this.state.pages.map( page =>
             <Route
               // path={["/edit/:vehicleID", "/add/"]}
@@ -464,17 +443,6 @@ export class App extends Component {
               }
             />
           ) }
-
-          {/*<Route*/ }
-          {/*  exact path={ [ `/vehicles/:vehicleID/print_details` ] }*/ }
-          {/*  render={*/ }
-          {/*    props =>*/ }
-          {/*      <PrintDetails*/ }
-          {/*        { ...props }*/ }
-          {/*        printDetails={ this.printDetails } // this is for the add form*/ }
-          {/*      />*/ }
-          {/*  }*/ }
-          {/*/>*/ }
 
           { this.state.pages.map( page =>
             <Route
@@ -499,6 +467,19 @@ export class App extends Component {
     }
   }
 }
+
+// {/*{<Route*/}
+// {/*  exact path={ [ `/vehicles//:vehicleID/print_details` ] }*/}
+// {/*  render={*/}
+// {/*    props =>*/}
+// {/*      <PrintDetails*/}
+// {/*        { ...props }*/}
+// {/*        data={ this.state.vehicles}*/}
+// {/*        dataArrayName="vehicles"*/}
+// {/*        printDetails={ this.printDetails } // this is for the add form*/}
+// {/*      />*/}
+// {/*  }*/}
+// {/*/>*/}
 
 // pages: [
 //   {

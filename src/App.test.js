@@ -24,17 +24,17 @@ Enzyme.configure( { adapter: new Adapter() } );
 let state = localData;
 let app = shallow( <App/> );
 
-// beforeEach( () => {
-//   state = localData;
-//   console.log( "beforeEach" );
-// } );
-
-describe( 'Description of subtests', () => {
-  it( 'sums numbers', () => {
-    expect( 1 + 2 ).toEqual( 3 );
-    expect( 2 + 2 ).toEqual( 4 );
-  } );
+beforeEach( () => {
+  state = localData;
+  // console.log( "beforeEach" );
 } );
+
+// describe( 'Description of subtests', () => {
+//   it( 'sums numbers', () => {
+//     expect( 1 + 2 ).toEqual( 3 );
+//     expect( 2 + 2 ).toEqual( 4 );
+//   } );
+// } );
 
 describe( "checks totalDistance() calculates the correct distance for every vehicle:", () => {
   state.vehicles.map( ( vehicle, index ) => {
@@ -47,16 +47,59 @@ describe( "checks totalDistance() calculates the correct distance for every vehi
   } );
 } );
 
+// editRecord
+
+// addRecord
+
+// deleteRecord
+
+// updateOdometer
+
+describe( "checks totalDistance() calculates the correct distance for every vehicle:", () => {
+  state.vehicles.map( ( vehicle, index ) => {
+    it( "totalDistance for vehicle: " + index, () => {
+      // console.log(typeof(app.instance().totalDistance(vehicle, state)));
+      expect( typeof ( app.instance().totalDistance( vehicle ) ) ).toStrictEqual( "number" );
+      expect( app.instance().totalDistance( vehicle ) ).toBeGreaterThanOrEqual( 0 );
+      expect( app.instance().totalDistance( vehicle ) ).toMatchSnapshot();
+    } );
+  } );
+} );
+
+// totalDistance
 describe( 'Fuel efficiency of vehicles:', () => {
   state.vehicles.map( ( vehicle, index ) => {
     it( "Fuel efficiency of vehicle: " + index, () => {
       // console.log( app.instance().fuelEfficiency( vehicle ) );
-      expect( typeof ( app.instance().totalDistance( vehicle ) ) ).toStrictEqual( "number" );
-      expect( app.instance().totalDistance( vehicle ) ).toBeGreaterThanOrEqual( 0 );
+      expect( typeof ( app.instance().fuelEfficiency( vehicle ) ) ).toStrictEqual( "number" );
+      expect( app.instance().fuelEfficiency( vehicle ) ).toBeGreaterThanOrEqual( 0 );
       expect( app.instance().fuelEfficiency( vehicle ) ).toMatchSnapshot();
     } );
   } );
 } );
+
+// // totalServices
+// describe( 'Fuel efficiency of vehicles:', () => {
+//   // state.pages.map(page => {
+//   //   state[ page ].map( ( record ) => {
+//     state.vehicles.map( ( record ) => {
+//       it( "Fuel efficiency of vehicle: " + record.vehicleID, () => {
+//         // console.log( app.instance().fuelEfficiency( vehicle ) );
+//         expect( typeof ( app.instance().totalServices( record ) ).toStrictEqual( "number" ) );
+//         expect( app.instance().totalServices( record ) ).toBeGreaterThanOrEqual( 0 );
+//         expect( app.instance().totalServices( record ) ).toMatchSnapshot();
+//       } );
+//     } );
+//   // });
+// } );
+
+// revenue
+
+// kilometerSinceLastService
+
+// requiresAService
+
+// printDetails
 
 // // https://www.youtube.com/watch?v=3e1GHCA3GP0
 // // https://medium.com/@rossbulat/testing-in-react-with-jest-and-enzyme-an-introduction-99ce047dfcf8
