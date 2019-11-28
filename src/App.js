@@ -10,10 +10,11 @@ import { Home } from "./components/Home/Home";
 import { Services } from "./components/Services";
 import firebase from "./Firebase";
 
-
 import { MDBBtn, MDBBadge, MDBIcon, MDBDataTable, MDBContainer } from 'mdbreact';
 import { Link } from "react-router-dom";
 import { Table, Button } from 'reactstrap';
+
+import { localData } from './LocalData';
 
 // import './App.css';
 
@@ -25,7 +26,7 @@ export class App extends Component {
   constructor( props ) {
     /* properties: blank... */
     super( props );
-    const _pages = [ "vehicles", "services", "bookings", "journeys", "refuels" ];
+    const _pages = localData.pages;
 
     this.offline = true;
     this.updloadLocalData = false;
@@ -43,523 +44,11 @@ export class App extends Component {
     // let _vehicles;
     // _vehicles = ..;
 
-    this.state = {
-
-      // IMPORTANT : make sure all page-specific data contains their
-      // associated page's name in their own names
-      pages: _pages,
-
-      vehicles: [
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          manufacturer: "Jeep",
-          model: "Wrangler (JK)",
-          odometer: 20333,
-          requiresServicing: "Yes",
-          dateManufactured: 2017,
-          datePurchased: "2017/05/20",
-          dateLastServiced: -1,
-          // kilometersSinceServiced: 2800000,
-          kilometersPerService: 90000,
-          fuelEconomy: -1,
-          fuelCapacity: 104,
-          weight: 1.45,
-          registrationNumber: "1ABC-123",
-        },
-        {
-          vehicleID: "Carol's Corolla",
-          VIN: "ExampleVIN",
-          manufacturer: "Toyota",
-          model: "Corolla (E160)",
-          odometer: 20000,
-          requiresServicing: "No",
-          dateManufactured: 2014,
-          datePurchased: "2018/05/10",
-          dateLastServiced: -1,
-          // kilometersSinceServiced: 2000,
-          kilometersPerService: 110000,
-          fuelEconomy: -1,
-          fuelCapacity: 82.5,
-          weight: 1.08,
-          registrationNumber: "1ABC-123",
-        },
-        {
-          vehicleID: "Carol's 2nd Corolla",
-          VIN: "ExampleVIN",
-          manufacturer: "Toyota",
-          model: "Corolla (E160)",
-          odometer: 20000,
-          requiresServicing: "No",
-          dateManufactured: 2014,
-          datePurchased: "2018/06/04",
-          dateLastServiced: -1,
-          // kilometersSinceServiced: 2000,
-          kilometersPerService: 110000,
-          fuelEconomy: -1,
-          fuelCapacity: 82.5,
-          weight: 1.08,
-          registrationNumber: "1ABC-123",
-        }
-      ],
-      vehiclesHeadings: [
-        {
-          label: "Vehicle ID",
-          field: "vehicleID",
-        },
-        {
-          label: "VIN",
-          field: "VIN",
-        },
-        {
-          label: "Model",
-          field: `model`,
-        },
-        {
-          label: "Make",
-          field: "manufacturer",
-        },
-        {
-          label: "Odometer (km)",
-          field: "odometer",
-        },
-        {
-          label: "Requires Servicing",
-          field: "requiresServicing",
-        },
-        {
-          label: "Date Manufactured",
-          field: "dateManufactured",
-        },
-        {
-          label: "Date Purchased",
-          field: "datePurchased",
-        },
-        {
-          label: "Last Service",
-          field: "dateLastServiced",
-        },
-        // {
-        //   label: "kms since Last Service",
-        //   field: "kilometersSinceServiced",
-        // },
-        {
-          label: "kms per Service",
-          field: "kilometersPerService",
-        },
-        {
-          label: "Fuel Economy",
-          field: "fuelEconomy",
-        },
-        {
-          label: "Fuel Capacity (L)",
-          field: "fuelCapacity",
-        },
-        {
-          label: "Weight (T)",
-          field: "weight",
-        },
-        {
-          label: "Reg. No.",
-          field: "registrationNumber",
-        },
-      ],
-      vehiclesDefaultRecord: {
-        vehicleID: "Jeff's Jeep",
-        VIN: "ExampleVIN",
-        manufacturer: "Jeep",
-        model: "Wrangler (JK)",
-        odometer: 280000,
-        requiresServicing: "Yes",
-        dateManufactured: 2017,
-        datePurchased: "2017/05/20",
-        dateLastServiced: -1,
-        // kilometersSinceServiced: 2800000,
-        kilometersPerService: 90000,
-        fuelEconomy: -1,
-        fuelCapacity: 104,
-        weight: 1.45,
-        registrationNumber: "1ABC-123",
-      },
-
-      services: [
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          serviceID: "001-IJ454",
-          odometer: 142000,
-          date: "2019/04/03",
-          serviceLocation: "Autobahn Mechanical and Electrical Services Canningvale",
-        },
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          serviceID: "002-FE654",
-          odometer: 74000,
-          date: "2015/06/01",
-          serviceLocation: "Autobahn Mechanical and Electrical Services Victoria Park",
-        },
-        {
-          vehicleID: "Carol's Corolla",
-          VIN: "ExampleVIN",
-          serviceID: "001-AA000",
-          odometer: 122000,
-          date: "2018/08/22",
-          serviceLocation: "Autobahn Mechanical and Electrical Services Canningvale",
-        },
-        {
-          vehicleID: "Carol's 2nd Corolla",
-          VIN: "ExampleVIN",
-          serviceID: "001-AA000",
-          odometer: 101000,
-          date: "2018/08/23",
-          serviceLocation: "Autobahn Mechanical and Electrical Services Canningvale",
-        },
-      ],
-      servicesHeadings: [
-        {
-          label: "Vehicle ID",
-          field: "vehicleID",
-        },
-        {
-          label: "VIN",
-          field: "VIN",
-        },
-        {
-          label: "Service ID",
-          field: "serviceID",
-        },
-        {
-          label: "Odometer Reading",
-          field: "odometer",
-        },
-        {
-          label: "Date Last Serviced",
-          field: "date",
-        },
-        {
-          label: "Location of Last Service",
-          field: "serviceLocation",
-        },
-      ],
-      servicesDefaultRecord: {
-        vehicleID: "Jeff's Jeep",
-        VIN: "ExampleVIN",
-        serviceID: "001-IJ454",
-        odometer: 142000,
-        date: "2019/04/03",
-        serviceLocation: "Autobahn Mechanical and Electrical Services Canningvale",
-      },
-
-      bookings: [
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          bookingID: "002-EE037",
-          bookingStartDate: "2019/04/06",
-          bookingEndDate: "2019/04/09",
-          odometerAtStart: 74000,
-          bookingType: "Per Day",
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          bookingID: "001-KD037",
-          bookingStartDate: "2019/02/06",
-          bookingEndDate: "2019/03/09",
-          odometerAtStart: 62333,
-          bookingType: "Per Day",
-          dateCreated: "2019/02/06",
-          dateLastUpdated: "2019/03/09",
-        },
-        {
-          vehicleID: "Carol's Corolla",
-          VIN: "ExampleVIN",
-          bookingID: "001-II030",
-          bookingStartDate: "2019/05/06",
-          bookingEndDate: "2019/05/11",
-          odometerAtStart: 91000,
-          bookingType: "Per km",
-          dateCreated: "2019/05/06",
-          dateLastUpdated: "2019/05/06",
-        },
-        {
-          vehicleID: "Carol's 2nd Corolla",
-          VIN: "ExampleVIN",
-          bookingID: "001-KJ022",
-          bookingStartDate: "2019/05/06",
-          bookingEndDate: "2019/05/11",
-          odometerAtStart: 91000,
-          bookingType: "Per Day",
-          dateCreated: "2019/05/06",
-          dateLastUpdated: "2019/05/06",
-        },
-      ],
-      bookingsHeadings: [
-        {
-          label: "Vehicle ID",
-          field: "vehicleID",
-        },
-        {
-          label: "VIN",
-          field: "VIN",
-        },
-        {
-          label: "Booking ID",
-          field: "bookingID",
-        },
-        {
-          label: "Last Booking Start Date",
-          field: "bookingStartDate",
-        },
-        {
-          label: "Last Booking End Date",
-          field: "bookingEndDate",
-        },
-        {
-          label: "Odometer When Last Booked (km)",
-          field: "odometerAtStart",
-        },
-        {
-          label: "Type",
-          field: "bookingType",
-        },
-        {
-          label: "Date Last Booking was Created",
-          field: "dateCreated",
-        },
-        {
-          label: "Date Last Booking was Updated",
-          field: "dateLastUpdated",
-        },
-      ],
-      bookingsDefaultRecord: {
-        vehicleID: "Jeff's Jeep",
-        VIN: "ExampleVIN",
-        bookingID: "002-EE037",
-        bookingStartDate: "2019/04/06",
-        bookingEndDate: "2019/04/09",
-        odometerAtStart: 74000,
-        bookingType: "Per Day",
-        dateCreated: "2019/04/06",
-        dateLastUpdated: "2019/04/06",
-      },
-
-      journeys: [
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          bookingID: "002-EE037",
-          journeyID: "0003-XXI7",
-          journeyStartDateTime: "2019/04/06 08:22",
-          journeyEndDateTime: "2019/04/09 08:47",
-          odometerAtStart: 74000,
-          odometerAtEnd: 74018,
-          journeyStartLocation: "89080-789777",
-          journeyEndLocation: "89080-789889",
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          bookingID: "002-EE037",
-          journeyID: "0002-XXI7",
-          journeyStartDateTime: "2019/04/06 08:22",
-          journeyEndDateTime: "2019/04/09 08:47",
-          odometerAtStart: 74000,
-          odometerAtEnd: 74018,
-          journeyStartLocation: "89080-789777",
-          journeyEndLocation: "89080-789889",
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-        {
-          vehicleID: "Carol's Corolla",
-          VIN: "ExampleVIN",
-          bookingID: "002-EE037",
-          journeyID: "0002-XXI7",
-          journeyStartDateTime: "2019/04/06 08:22",
-          journeyEndDateTime: "2019/04/09 08:47",
-          odometerAtStart: 74000,
-          odometerAtEnd: 74018, journeyStartLocation: "89080-789777",
-          journeyEndLocation: "89080-789889",
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-        {
-          vehicleID: "Carol's 2nd Corolla",
-          VIN: "ExampleVIN",
-          bookingID: "002-EE037",
-          journeyID: "0002-XXI7",
-          journeyStartDateTime: "2019/04/06 08:22",
-          journeyEndDateTime: "2019/04/09 08:47",
-          odometerAtStart: 74000,
-          odometerAtEnd: 74018, journeyStartLocation: "89080-789777",
-          journeyEndLocation: "89080-789889",
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-      ],
-      journeysHeadings: [
-        {
-          label: "Vehicle ID",
-          field: "vehicleID",
-        },
-        {
-          label: "VIN",
-          field: "VIN",
-        },
-        {
-          label: "Booking ID",
-          field: "bookingID",
-        },
-        {
-          label: "Journey ID",
-          field: "journeyID",
-        },
-        {
-          label: "Start Date-Time",
-          field: "journeyStartDateTime",
-        },
-        {
-          label: "End Date-Time",
-          field: "journeyEndDateTime",
-        },
-        {
-          label: "Odometer At Start (km)",
-          field: "odometerAtStart",
-        },
-        {
-          label: "Odometer At End (km)",
-          field: "odometerAtEnd",
-        },
-        {
-          label: "Starting Location",
-          field: "journeyStartLocation",
-        },
-        {
-          label: "Ending Location",
-          field: "journeyEndLocation",
-        },
-        {
-          label: "Date Created",
-          field: "dateCreated",
-        },
-        {
-          label: "Date Last Updated",
-          field: "dateLastUpdated",
-        },
-      ],
-      journeysDefaultRecord: {
-        vehicleID: "Carol's 2nd Corolla",
-        VIN: "ExampleVIN",
-        bookingID: "002-EE037",
-        journeyID: "0002-XXI7",
-        journeyStartDateTime: "2019/04/06 08:22",
-        journeyEndDateTime: "2019/04/09 08:47",
-        odometerAtStart: 74000,
-        odometerAtEnd: 74018,
-        journeyStartLocation: "89080-789777",
-        journeyEndLocation: "89080-789889",
-        dateCreated: "2019/04/06",
-        dateLastUpdated: "2019/04/06",
-      },
-
-      refuels: [
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          bookingID: "002-EE037",
-          refuelID: "0001-XX00",
-          fuelQuantity: 65.2,
-          fuelPrice: 1.55,
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-        {
-          vehicleID: "Jeff's Jeep",
-          VIN: "ExampleVIN",
-          bookingID: "001-JJI037",
-          refuelID: "0001-XX00",
-          fuelQuantity: 33.2,
-          fuelPrice: 1.52,
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-        {
-          vehicleID: "Carol's Corolla",
-          VIN: "ExampleVIN",
-          bookingID: "001-JJI037",
-          refuelID: "0001-XX00",
-          fuelQuantity: 33.2,
-          fuelPrice: 1.52,
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-        {
-          vehicleID: "Carol's 2nd Corolla",
-          VIN: "ExampleVIN",
-          bookingID: "001-JJI037",
-          refuelID: "0001-XX00",
-          fuelQuantity: 33.2,
-          fuelPrice: 1.52,
-          dateCreated: "2019/04/06",
-          dateLastUpdated: "2019/04/06",
-        },
-      ],
-      refuelsHeadings: [
-        {
-          label: "Vehicle ID",
-          field: "vehicleID",
-        },
-        {
-          label: "VIN",
-          field: "VIN",
-        },
-        {
-          label: "Booking ID",
-          field: "bookingID",
-        },
-        {
-          label: "Refuel ID",
-          field: "refuelID",
-        },
-        {
-          label: "Fuel Purchased (L)",
-          field: "fuelQuantity",
-        },
-        {
-          label: "Fuel Price ($/L)",
-          field: "fuelPrice",
-        },
-        {
-          label: "Date Created",
-          field: "dateCreated",
-        },
-        {
-          label: "Date Last Updated",
-          field: "dateLastUpdated",
-        },
-      ],
-      refuelsDefaultRecord: {
-        vehicleID: "Carol's 2nd Corolla",
-        VIN: "ExampleVIN",
-        bookingID: "001-JJI037",
-        refuelID: "0001-XX00",
-        fuelQuantity: 33.2,
-        fuelPrice: 1.52,
-        dateCreated: "2019/04/06",
-        dateLastUpdated: "2019/04/06",
-      },
-    };
+    this.state = localData;
   }
 
-  /**
-   *
-   */
+  // DOWNLOADS Firebase Data
+  // UPLOADS Local Data to Firebase
   componentDidMount(): void {
     if ( this.offline === false ) {
       // Receives calls when the Firebase-source-data is updated & automatically updates the applications data
@@ -684,6 +173,14 @@ export class App extends Component {
     // console.log("recordIdField", recordIdField);
     if ( this.offline === false ) {
       // TODO: make the offline remove system work
+      // Deletes the firebase record
+      firebase.firestore().collection( dataArrayName ).doc( record[ recordIdField ] ).delete()
+        .then( function () {
+          console.log( "Document successfully written!" );
+        } )
+        .catch( function ( error ) {
+          console.error( "Error writing document: ", error );
+        } );
     } else {
       const _indexOfRecord = this.state[ dataArrayName ].findIndex( element => element[ recordIdField ] === record[ recordIdField ] );
       // console.log("_indexOfRecord", _indexOfRecord);
@@ -763,14 +260,19 @@ export class App extends Component {
   /**
    * The total distance a vehicle has traveled
    * @param vehicle
+   * @param state - optional - for passing a fake state for testing
    * @returns {number}
    */
-  totalDistance = ( vehicle ) => {
-    let _journeys = this.state.journeys.filter( journey => journey.vehicleID === vehicle.vehicleID );
+  totalDistance = ( vehicle, state = this.state ) => {
+    const _journeys = state.journeys.filter( journey => journey.vehicleID === vehicle.vehicleID );
     let _totalDistance = 0;
     _journeys.map( journey => _totalDistance += ( journey.odometerAtEnd - journey.odometerAtStart ) );
     return ( _totalDistance );
   };
+
+  // return4 = () => {
+  //   return ( 4 );
+  // };
 
   /**
    * Fuel Efficiency    *taking into account second-hand vehicles
@@ -795,7 +297,7 @@ export class App extends Component {
    * @returns {number}
    */
   totalServices = ( vehicle ) => {
-    return ( this.state.services.filter( service => service.vehicleID = vehicle.vehicleID ).length );
+    return ( this.state.services.filter( service => service.vehicleID === vehicle.vehicleID ).length );
   };
 
   /**
@@ -855,8 +357,8 @@ export class App extends Component {
    * @returns {boolean}
    */
   requiresAService = ( vehicle ) => {
-    if (this.kilometersSinceLastService(vehicle) > vehicle.kilometersPerService) {
-      return(true);
+    if ( this.kilometersSinceLastService( vehicle ) > vehicle.kilometersPerService ) {
+      return ( true );
     } else {
       // // if it hasn't been serviced in 1.5 years
       // // get the latest data it was serviced
@@ -865,7 +367,7 @@ export class App extends Component {
       // } else {
       //   return(false);
       // }
-      return(false);
+      return ( false );
     }
   };
 
@@ -874,17 +376,19 @@ export class App extends Component {
    * @param vehicle
    */
   printDetails = ( vehicle ) => {
-    const detailsString =
+    console.log(vehicle);
+    return (
       `
         Vehicle: ${ vehicle.manufacturer } ${ vehicle.model } ${ vehicle.dateManufactured }
         Registration No: ${ vehicle.registrationNumber }
         Total kilometers travelled: ${ this.totalDistance( vehicle ) }
         Total services: ${ this.totalServices( vehicle ) }
-        Revenue recorded: ${ this.revenue( vehicle ) }
+        Revenue recorded: $${ Number(this.revenue( vehicle )).toFixed(2) }
         Kilometers since last service: ${ this.kilometersSinceLastService( vehicle ) }
-        Fuel economy: ${ this.fuelEfficiency( vehicle ) }
+        Fuel economy: ${ this.fuelEfficiency( vehicle ) } L/100km
         Requires a service: ${ this.requiresAService( vehicle ) }
-        `;
+        `
+    );
   };
 
   render() {
@@ -892,8 +396,9 @@ export class App extends Component {
     // console.log(this.fuelEfficiency(this.state.vehicles[0]) + " L/100km");
     // console.log(this.totalServices(this.state.vehicles[0]));
 
-    let testData = "vehicles";
-    console.log( this.printDetails( this.state.vehicles[ 0 ] ) );
+    // let testData = "vehicles";
+    // console.log( this.printDetails( this.state.vehicles[ 0 ] ) );
+    console.log( this.state );
 
     if ( this.state.vehicles == null ) {
       return (
@@ -902,7 +407,7 @@ export class App extends Component {
     } else {
       return (
         <div>
-          <button data-testid="button" onClick={ () => this.updateOdometer( this.state.vehicles[ 0 ] ) }>
+          <button data-testid="button" onClick={ () => console.log(this.printDetails(this.state.vehicles[0]))  }>
             test
           </button>
 
@@ -917,21 +422,21 @@ export class App extends Component {
             }
           />
 
-          <Route
-            // path={["/edit/:vehicleID", "/add/"]}
-            exact path={ `/testData` }
-            render={
-              props =>
-                <ShowTables
-                  { ...props }
-                  columnHeadings={ this.state[ `${ testData }Headings` ] }
-                  data={ this.state[ testData ] }
-                  dataArrayName={ testData }
-                  recordIdFieldName={ testData.substring( 0, testData.length - 1 ) + "ID" } // the UNIQUE ID Field for the record's type
-                  deleteRecord={ this.deleteRecord }
-                />
-            }
-          />
+          {/*<Route*/ }
+          {/*  // path={["/edit/:vehicleID", "/add/"]}*/ }
+          {/*  exact path={ `/testData` }*/ }
+          {/*  render={*/ }
+          {/*    props =>*/ }
+          {/*      <ShowTables*/ }
+          {/*        { ...props }*/ }
+          {/*        columnHeadings={ this.state[ `${ testData }Headings` ] }*/ }
+          {/*        data={ this.state[ testData ] }*/ }
+          {/*        dataArrayName={ testData }*/ }
+          {/*        recordIdFieldName={ testData.substring( 0, testData.length - 1 ) + "ID" } // the UNIQUE ID Field for the record's type*/ }
+          {/*        deleteRecord={ this.deleteRecord }*/ }
+          {/*      />*/ }
+          {/*  }*/ }
+          {/*/>*/ }
 
           { this.state.pages.map( page =>
             <Route
