@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="846ed461-9160-4cbb-8e00-cf06c6aa7292" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Home/Home.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ShowTables/TestMemoryRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditAdd/EditAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Services.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowVehicles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowVehicles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index - backup before diegos help.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index - backup before diegos help.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,14 +57,15 @@
     <property name="two.files.diff.last.used.folder" value="$USER_HOME$/Downloads/react-vehicles-stefan-master/src" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src\components\Home" />
-      <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src\components\ShowTables" />
-      <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src\components\EditAdd" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src" />
       <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\20004338\Documents\C4Prog-2019S2-MAD\react-vehicle-manager\src\components\ShowTables" />
+      <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src\components\Home" />
+      <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src\components\ShowTables" />
+      <recent name="C:\Users\Stefan\Documents\C4Prog-2019S2-TDD\react-vehicle-manager\src\components\EditAdd" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -119,6 +119,7 @@
       <workItem from="1574341640871" duration="3086000" />
       <workItem from="1574427924990" duration="13770000" />
       <workItem from="1574668228148" duration="25886000" />
+      <workItem from="1574905849508" duration="2615000" />
     </task>
     <servers />
   </component>

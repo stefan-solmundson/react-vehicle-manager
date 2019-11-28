@@ -14,7 +14,7 @@ export class Home extends Component {
   }
 
   render() {
-    const { columnHeadings, data, history } = this.props;
+    // const { columnHeadings, data, history } = this.props;
     // console.log( "this.props", this.props );
     // console.log( "columnHeadings", columnHeadings );
     // console.log( "data", data );
