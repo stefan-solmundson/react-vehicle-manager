@@ -8,6 +8,7 @@ import { Switch } from "react-router";
 import { ShowTables } from "./components/ShowTables/ShowTables";
 import { Home } from "./components/Home/Home";
 import { Services } from "./components/Services";
+import { PrintDetails } from "./components/PrintDetails/PrintDetails"
 import firebase from "./Firebase";
 
 import { MDBBtn, MDBBadge, MDBIcon, MDBDataTable, MDBContainer } from 'mdbreact';
@@ -376,18 +377,28 @@ export class App extends Component {
    * @param vehicle
    */
   printDetails = ( vehicle ) => {
-    console.log(vehicle);
+    // console.log( vehicle );
     return (
-      `
-        Vehicle: ${ vehicle.manufacturer } ${ vehicle.model } ${ vehicle.dateManufactured }
-        Registration No: ${ vehicle.registrationNumber }
-        Total kilometers travelled: ${ this.totalDistance( vehicle ) }
-        Total services: ${ this.totalServices( vehicle ) }
-        Revenue recorded: $${ Number(this.revenue( vehicle )).toFixed(2) }
-        Kilometers since last service: ${ this.kilometersSinceLastService( vehicle ) }
-        Fuel economy: ${ this.fuelEfficiency( vehicle ) } L/100km
-        Requires a service: ${ this.requiresAService( vehicle ) }
-        `
+      <React.Fragment>
+        <dl className="row">
+          <dt className="col-sm-3">Vehicle:</dt>
+          <dd className="col-sm-9"> { vehicle.manufacturer } { vehicle.model } { vehicle.dateManufactured }</dd>
+          <dt className="col-sm-3">Registration No:</dt>
+          <dd className="col-sm-9"> { vehicle.registrationNumber }</dd>
+          <dt className="col-sm-3">Total kilometers travelled:</dt>
+          <dd className="col-sm-9"> { this.totalDistance( vehicle ) } km</dd>
+          <dt className="col-sm-3">Total services:</dt>
+          <dd className="col-sm-9"> { this.totalServices( vehicle ) }</dd>
+          <dt className="col-sm-3">Revenue recorded:</dt>
+          <dd className="col-sm-9"> ${ Number( this.revenue( vehicle ) ).toFixed( 2 ) }</dd>
+          <dt className="col-sm-3">Kilometers since last service:</dt>
+          <dd className="col-sm-9"> { this.kilometersSinceLastService( vehicle ) } km</dd>
+          <dt className="col-sm-3">Fuel economy:</dt>
+          <dd className="col-sm-9"> { this.fuelEfficiency( vehicle ) } L/100km</dd>
+          <dt className="col-sm-3">Requires a service:</dt>
+          <dd className="col-sm-9"> { this.requiresAService( vehicle ) === true ? "Yes" : "No" }</dd>
+        </dl>
+      </React.Fragment>
     );
   };
 
@@ -398,7 +409,7 @@ export class App extends Component {
 
     // let testData = "vehicles";
     // console.log( this.printDetails( this.state.vehicles[ 0 ] ) );
-    console.log( this.state );
+    // console.log( this.state );
 
     if ( this.state.vehicles == null ) {
       return (
@@ -407,7 +418,7 @@ export class App extends Component {
     } else {
       return (
         <div>
-          <button data-testid="button" onClick={ () => console.log(this.printDetails(this.state.vehicles[0]))  }>
+          <button data-testid="button" onClick={ () => console.log( this.printDetails( this.state.vehicles[ 0 ] ) ) }>
             test
           </button>
 
@@ -422,21 +433,18 @@ export class App extends Component {
             }
           />
 
-          {/*<Route*/ }
-          {/*  // path={["/edit/:vehicleID", "/add/"]}*/ }
-          {/*  exact path={ `/testData` }*/ }
-          {/*  render={*/ }
-          {/*    props =>*/ }
-          {/*      <ShowTables*/ }
-          {/*        { ...props }*/ }
-          {/*        columnHeadings={ this.state[ `${ testData }Headings` ] }*/ }
-          {/*        data={ this.state[ testData ] }*/ }
-          {/*        dataArrayName={ testData }*/ }
-          {/*        recordIdFieldName={ testData.substring( 0, testData.length - 1 ) + "ID" } // the UNIQUE ID Field for the record's type*/ }
-          {/*        deleteRecord={ this.deleteRecord }*/ }
-          {/*      />*/ }
-          {/*  }*/ }
-          {/*/>*/ }
+          {/*{<Route*/}
+          {/*  exact path={ [ `/vehicles//:vehicleID/print_details` ] }*/}
+          {/*  render={*/}
+          {/*    props =>*/}
+          {/*      <PrintDetails*/}
+          {/*        { ...props }*/}
+          {/*        data={ this.state.vehicles}*/}
+          {/*        dataArrayName="vehicles"*/}
+          {/*        printDetails={ this.printDetails } // this is for the add form*/}
+          {/*      />*/}
+          {/*  }*/}
+          {/*/>*/}
 
           { this.state.pages.map( page =>
             <Route
@@ -451,10 +459,22 @@ export class App extends Component {
                     dataArrayName={ page }
                     recordIdFieldName={ page.substring( 0, page.length - 1 ) + "ID" } // the UNIQUE ID Field for the record's type
                     deleteRecord={ this.deleteRecord }
+                    printDetails={ this.printDetails }
                   />
               }
             />
           ) }
+
+          {/*<Route*/ }
+          {/*  exact path={ [ `/vehicles/:vehicleID/print_details` ] }*/ }
+          {/*  render={*/ }
+          {/*    props =>*/ }
+          {/*      <PrintDetails*/ }
+          {/*        { ...props }*/ }
+          {/*        printDetails={ this.printDetails } // this is for the add form*/ }
+          {/*      />*/ }
+          {/*  }*/ }
+          {/*/>*/ }
 
           { this.state.pages.map( page =>
             <Route

@@ -5,46 +5,35 @@ import { Button, Table } from "reactstrap";
 import EditAdd from "../EditAdd/EditAdd";
 import { ShowTables } from "../ShowTables/ShowTables";
 
-export class Home extends Component {
-  state = {};
+export class PrintDetails extends Component {
+  state = {
+    // printDetailsString: this.props.printDetails(this.props.match.params.vehicleID),
+    // printDetailsString: "test",
+  };
 
-  componentDidMount() {
-    // console.log("Home.js's props: *below");
-    // console.dir(this.props);
-  }
+  componentDidMount() {}
 
   render() {
+    // console.log();
+    console.log("this.props", this.props);
     // const { columnHeadings, data, history } = this.props;
     // console.log( "this.props", this.props );
     // console.log( "columnHeadings", columnHeadings );
     // console.log( "data", data );
     // console.log("", );
-    // console.log("", );
-    // console.log("", );
-    // console.log("", );
     return (
       <div className="px-5 py-3">
-        { this.props.pages.map( ( page, index ) => <>
-          { index % 2 ?
-            <Link className="btn btn-primary m-2"
-                  to={ {
-                    pathname: `/${ page }/`,
-                  } }>
-              { page }
-            </Link>
-            :
-            <Link className="btn btn-secondary m-2"
-                  to={ {
-                    pathname: `/${ page }/`,
-                  } }>
-              { page }
-            </Link>
-          }
-        </> ) }
+        <p>test</p>
+        { this.state.printDetailsString &&
+        <>
+          {/*<input value={ this.state.printDetailsString }/>*/ }
+          { this.state.printDetailsString }
+        </>
+        }
       </div>
     )
   }
 }
 
-export default Home;
+export default PrintDetails;
 
