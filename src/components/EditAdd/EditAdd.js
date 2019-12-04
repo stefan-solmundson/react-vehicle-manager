@@ -89,7 +89,11 @@ export class EditAdd extends Component {
         <MDBContainer className="p-3">
           <form onSubmit={this.onSubmit}>
             <p className="h4 text-center mb-4">
-              Edit record: {record ? `${record.manufacturer} ${record.model}` : ''}
+              { this.props.match.params.operation === "add" ?
+                  `Add record: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Add Record' }`
+                  :
+                  `Edit record: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Edit Record' }`
+              }
             </p>
             <MDBContainer className="my-4">
               {record ?

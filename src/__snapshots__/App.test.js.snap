@@ -1,25 +1,419 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's 2nd Corolla 1`] = `18700`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's 2nd Corolla 2`] = `18700`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's 2nd Corolla 3`] = `18700`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's 2nd Corolla 4`] = `18700`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's 2nd Corolla 5`] = `18700`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's Corolla 1`] = `6000`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's Corolla 2`] = `6000`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's Corolla 3`] = `6000`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's Corolla 4`] = `6000`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Carol's Corolla 5`] = `6000`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 1`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 2`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 3`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 4`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 5`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 6`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 7`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 8`] = `0`;
+
+exports[`Checks kilometersSinceLastService() returns correctly for all records of ALL types: Checks kilometersSinceLastService() returns correctly: Jeff's Jeep 9`] = `0`;
+
+exports[`Checks printDetails() returns correctly for all vehicles: Checks printDetails() returns correctly: Carol's 2nd Corolla 1`] = `
+<React.Fragment>
+  <dl
+    className="row"
+  >
+    <dt
+      className="col-sm-3"
+    >
+      Vehicle:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      Toyota
+       
+      Corolla (E160)
+       
+      2014
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Registration No:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      1ABC-123
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Total kilometers travelled:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      18
+       km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Total services:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      1
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Revenue recorded:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       $
+      360.00
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Kilometers since last service:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      18700
+       km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Fuel economy:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      184.44444444444446
+       L/100km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Requires a service:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      No
+    </dd>
+  </dl>
+</React.Fragment>
+`;
+
+exports[`Checks printDetails() returns correctly for all vehicles: Checks printDetails() returns correctly: Carol's Corolla 1`] = `
+<React.Fragment>
+  <dl
+    className="row"
+  >
+    <dt
+      className="col-sm-3"
+    >
+      Vehicle:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      Toyota
+       
+      Corolla (E160)
+       
+      2014
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Registration No:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      1ABC-123
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Total kilometers travelled:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      18
+       km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Total services:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      1
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Revenue recorded:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       $
+      0.00
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Kilometers since last service:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      6000
+       km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Fuel economy:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      184.44444444444446
+       L/100km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Requires a service:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      No
+    </dd>
+  </dl>
+</React.Fragment>
+`;
+
+exports[`Checks printDetails() returns correctly for all vehicles: Checks printDetails() returns correctly: Jeff's Jeep 1`] = `
+<React.Fragment>
+  <dl
+    className="row"
+  >
+    <dt
+      className="col-sm-3"
+    >
+      Vehicle:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      Jeep
+       
+      Wrangler (JK)
+       
+      2017
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Registration No:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      1ABC-123
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Total kilometers travelled:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      33
+       km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Total services:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      2
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Revenue recorded:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       $
+      720.00
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Kilometers since last service:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      0
+       km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Fuel economy:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      298.1818181818182
+       L/100km
+    </dd>
+    <dt
+      className="col-sm-3"
+    >
+      Requires a service:
+    </dt>
+    <dd
+      className="col-sm-9"
+    >
+       
+      No
+    </dd>
+  </dl>
+</React.Fragment>
+`;
+
+exports[`Checks requiresAService() returns correctly for all vehicles: Checks requiresAService() returns correctly: Carol's 2nd Corolla 1`] = `false`;
+
+exports[`Checks requiresAService() returns correctly for all vehicles: Checks requiresAService() returns correctly: Carol's Corolla 1`] = `false`;
+
+exports[`Checks requiresAService() returns correctly for all vehicles: Checks requiresAService() returns correctly: Jeff's Jeep 1`] = `false`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's 2nd Corolla 1`] = `360`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's 2nd Corolla 2`] = `360`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's 2nd Corolla 3`] = `360`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's 2nd Corolla 4`] = `360`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's 2nd Corolla 5`] = `360`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's Corolla 1`] = `0`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's Corolla 2`] = `0`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's Corolla 3`] = `0`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's Corolla 4`] = `0`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Carol's Corolla 5`] = `0`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 1`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 2`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 3`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 4`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 5`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 6`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 7`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 8`] = `720`;
+
+exports[`Checks revenue() returns correctly for all records of ALL types: Checks revenue() returns correctly: Jeff's Jeep 9`] = `720`;
+
 exports[`Fuel efficiency of vehicles: Fuel efficiency of vehicle: 0 1`] = `298.1818181818182`;
 
 exports[`Fuel efficiency of vehicles: Fuel efficiency of vehicle: 1 1`] = `184.44444444444446`;
 
 exports[`Fuel efficiency of vehicles: Fuel efficiency of vehicle: 2 1`] = `184.44444444444446`;
 
+exports[`Total services of vehicles: Total services of vehicle: Carol's 2nd Corolla 1`] = `1`;
+
+exports[`Total services of vehicles: Total services of vehicle: Carol's Corolla 1`] = `1`;
+
+exports[`Total services of vehicles: Total services of vehicle: Jeff's Jeep 1`] = `2`;
+
 exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 0 1`] = `33`;
 
 exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 0 2`] = `33`;
-
-exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 0 3`] = `33`;
 
 exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 1 1`] = `18`;
 
 exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 1 2`] = `18`;
 
-exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 1 3`] = `18`;
-
 exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 2 1`] = `18`;
 
 exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 2 2`] = `18`;
-
-exports[`checks totalDistance() calculates the correct distance for every vehicle: totalDistance for vehicle: 2 3`] = `18`;

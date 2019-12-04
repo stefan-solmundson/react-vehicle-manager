@@ -345,7 +345,7 @@ export class App extends Component {
       .map( service => service.odometer > _highestOdometer ? _highestOdometer = service.odometer : null );
 
     // odo of vehicle - odo of last service
-    return ( record.odometer - _highestOdometer )
+    return ( this.state.vehicles.find(element => element.vehicleID === record.vehicleID).odometer - _highestOdometer )
   };
 
   /**
