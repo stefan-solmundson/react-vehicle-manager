@@ -38,18 +38,6 @@ let appy = app.instance();
 //   } );
 // } );
 
-
-describe("checks totalDistance() calculates the correct distance for every vehicle:", () => {
-  tstate.vehicles.map((vehicle, index) => {
-    it("totalDistance for vehicle: " + index, () => {
-      // console.log(typeof(appy.totalDistance(vehicle, tstate)));
-      expect(typeof (appy.totalDistance(vehicle))).toStrictEqual("number");
-      expect(appy.totalDistance(vehicle)).toBeGreaterThanOrEqual(0);
-      expect(appy.totalDistance(vehicle)).toMatchSnapshot();
-    });
-  });
-});
-
 // totalDistance
 describe("checks totalDistance() calculates the correct distance for every vehicle:", () => {
   tstate.vehicles.map((vehicle, index) => {

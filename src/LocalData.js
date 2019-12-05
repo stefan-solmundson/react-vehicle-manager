@@ -4,6 +4,9 @@
  */
 export const localData = {
   pages: [ "vehicles", "services", "bookings", "journeys", "refuels" ],
+  // searchStr: "",
+  dark: false,
+  lastSortedArrayAndField: "",
 
   vehicles: [
     {

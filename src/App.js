@@ -7,17 +7,16 @@ import { Route } from "react-router-dom";
 import { Switch } from "react-router";
 import { ShowTables } from "./components/ShowTables/ShowTables";
 import { Home } from "./components/Home/Home";
-import { Services } from "./components/Services";
 import { PrintDetails } from "./components/PrintDetails/PrintDetails"
 import firebase from "./Firebase";
 
 import { MDBBtn, MDBBadge, MDBIcon, MDBDataTable, MDBContainer } from 'mdbreact';
 import { Link } from "react-router-dom";
-import { Table, Button } from 'reactstrap';
+import { Table, Button, Input, Form, FormGroup } from 'reactstrap';
 
 import { localData } from './LocalData';
 
-// import './App.css';
+import './App.css';
 
 export class App extends Component {
   // state = {
@@ -31,6 +30,7 @@ export class App extends Component {
 
     this.offline = true;
     this.updloadLocalData = false;
+    this.vehicleManager = false;
 
     // TODO: PUT A LOADER IN HERE FOR THE FIREBASE DATA
     this.firebaseCollections = [];
@@ -376,7 +376,7 @@ export class App extends Component {
     // console.log( vehicle );
     return (
       <React.Fragment>
-        <dl className="row">
+        <dl className={this.state.dark ? "row text-white" : "row"}>
           <dt className="col-sm-3">Vehicle:</dt>
           <dd className="col-sm-9"> { vehicle.manufacturer } { vehicle.model } { vehicle.dateManufactured }</dd>
           <dt className="col-sm-3">Registration No:</dt>
@@ -398,6 +398,98 @@ export class App extends Component {
     );
   };
 
+  /*
+  Git branching commands
+  git checkout -b nameofBranch
+  git commit -m "message"
+  git push -u origin nameofBranch
+  // origin is the name of the remote
+   */
+
+  /**
+   * Sorts a data-table by the specified field
+   * can do both ascending & descending order
+   * @param dataArrayName
+   * @param field - the field to be sorted by in descending order (cannot be switched to ascending)
+   * @param ascendingOrder - true if ascending order is desired, false for descending order
+   */
+  sortArrayByField = ( dataArrayName, field, ascendingOrder = true ) => {
+    let _dataArray = this.state[ dataArrayName ];
+
+    console.log( _dataArray );
+
+    _dataArray.sort( function ( aa, bb ) {
+      // let aaa = 5;
+      // let bbb = "b";
+      let aaa = aa[ field ];
+      let bbb = bb[ field ];
+      aaa = typeof ( aaa ) === "string" ? aaa.toUpperCase() : aaa;
+      bbb = typeof ( bbb ) === "string" ? bbb.toUpperCase() : bbb;
+      console.log( aaa );
+      console.log( bbb );
+      if ( aaa < bbb ) {
+        console.log( -1 );
+        return -1;
+      }
+      if ( aaa > bbb ) {
+        console.log( 1 );
+        return 1;
+      }
+      // aaa.toUpperCase();
+      console.log( aaa );
+      console.log( bbb );
+      console.log( typeof ( bbb ) );
+
+    } );
+
+    if ( !ascendingOrder ) {
+      _dataArray = _dataArray.reverse();
+    }
+    console.log( _dataArray );
+    this.setState( { [ dataArrayName ]: _dataArray, } );
+    // return(!ascendingOrder);
+  };
+
+  /**
+   * Searches through a data-table presenting positive search results first,
+   * leaving the negative search results below the positive ones
+   * non-case sensitive search
+   * @param dataArrayName
+   * @param searchStr - the string being used for the search
+   */
+  searchArray = ( dataArrayName, searchStr ) => {
+    // https://stackoverflow.com/questions/17387435/javascript-sort-array-of-objects-by-a-boolean-property/17387493
+    // console.log( searchStr );
+    searchStr = searchStr.toUpperCase();
+    let _dataArray = this.state[ dataArrayName ];
+
+    // console.log( _dataArray );
+
+    _dataArray.sort( function ( aa, bb ) {
+      // does the row/record contain the string
+      let aaContainsSearchStr = false;
+      let bbContainsSearchStr = false;
+      Object.keys( aa ).map( field => {
+        if ( aa[ field ].toString().toUpperCase().includes( searchStr ) ) {
+          aaContainsSearchStr = true
+        }
+        if ( bb[ field ].toString().toUpperCase().includes( searchStr ) ) {
+          bbContainsSearchStr = true
+        }
+      } );
+      // console.log("aa.vehicleID \t\t" + aa.vehicleID, "\ncontains searchStr \t" + aaContainsSearchStr);
+      // console.log("bb.vehicleID \t\t" + bb.vehicleID, "\ncontains searchStr \t" + bbContainsSearchStr);
+      return (
+        bbContainsSearchStr - aaContainsSearchStr
+        // bbContainsSearchStr - aaContainsSearchStr
+      );
+    } );
+
+    // console.log( _dataArray );
+
+    this.setState( { [ dataArrayName ]: _dataArray } );
+  };
+
   render() {
     // let testData = "vehicles";
     // console.log( this.printDetails( this.state.vehicles[ 0 ] ) );
@@ -409,10 +501,15 @@ export class App extends Component {
       )
     } else {
       return (
-        <div>
-          <button data-testid="button" onClick={ () => console.log( this.printDetails( this.state.vehicles[ 0 ] ) ) }>
-            test
-          </button>
+        <body className={this.state.dark ? "bgDark" : ""}>
+          {/*<Button onClick={ () => this.sortArrayByField( "vehicles", "vehicleID" ) }>*/}
+          {/*  test Sort*/}
+          {/*</Button>*/}
+          <Button className= { this.state.dark ? "btn-outline-white float-right m-4" : "btn-outline-black float-right m-4"}
+                  onClick={ () => this.setState({dark: !(this.state.dark)}) }>
+            { this.state.dark && "Light" }
+            { !this.state.dark && "Dark"}
+          </Button>
 
           <Route
             exact path={ [ "/", "/vehicles/", "/services/", "/bookings/", "/journeys/", "/refuels/" ] }
@@ -439,6 +536,9 @@ export class App extends Component {
                     recordIdFieldName={ page.substring( 0, page.length - 1 ) + "ID" } // the UNIQUE ID Field for the record's type
                     deleteRecord={ this.deleteRecord }
                     printDetails={ this.printDetails }
+                    sortArrayByField={ this.sortArrayByField }
+                    searchArray={ this.searchArray }
+                    dark={ this.state.dark }
                   />
               }
             />
@@ -462,7 +562,7 @@ export class App extends Component {
               }
             />
           ) }
-        </div>
+        </body>
       )
     }
   }

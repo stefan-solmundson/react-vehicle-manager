@@ -3,13 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="846ed461-9160-4cbb-8e00-cf06c6aa7292" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LocalData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LocalData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__snapshots__/App.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/__snapshots__/App.test.js.snap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditAdd/EditAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditAdd/EditAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.blahtest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.blahtest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Delete.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Services.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShowVehicles.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +45,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../temp/src" />
+    <property name="last_opened_file_path" value="F:/src temp" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -55,7 +57,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/Downloads/react-vehicles-stefan-master/src/App.js" />
-    <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/../temp/src" />
+    <property name="two.files.diff.last.used.folder" value="F:/src temp" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
