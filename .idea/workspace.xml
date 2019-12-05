@@ -3,15 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="846ed461-9160-4cbb-8e00-cf06c6aa7292" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LocalData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LocalData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Delete.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Services.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditAdd/EditAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditAdd/EditAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowTables/ShowTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowVehicles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

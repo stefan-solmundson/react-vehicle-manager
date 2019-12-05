@@ -4,6 +4,11 @@
 import React, {Component} from 'react';
 import {MDBBtn, MDBContainer, MDBRow} from "mdbreact";
 import firebase from "../../Firebase";
+// import {FormInline} from "../../../mdbreact-modified.esm";
+import {Table, Button, Input, Form, FormGroup, Label, Col, Container, Row} from 'reactstrap';
+// import 'node'
+// import {Row} from 'bootstrap';
+// import
 
 export class EditAdd extends Component {
 
@@ -25,13 +30,6 @@ export class EditAdd extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   // console.log('All data coming from the state in App.js:')
-  //   // console.dir(this.props.data);
-  //
-  //
-  // }
-
   // allows for the form to be edited
   onChange = (e) => {
     e.preventDefault();
@@ -43,10 +41,6 @@ export class EditAdd extends Component {
 
       return ({record})
     });
-    // if (this.props.data.find(element => element === this.state.record.vehicleID)) {
-    //   console.dir(this.props.data.find(element => element.vehicleID === this.state.record.vehicleID));
-    // } else {
-    // }
   };
 
   // validation
@@ -86,58 +80,43 @@ export class EditAdd extends Component {
     // console.log("record", record);
 
     return (
-        <MDBContainer className="p-3">
+        <Container className="p-3 text-center">
           <form onSubmit={this.onSubmit}>
-            <p className="h4 text-center mb-4">
+            <p className={this.props.dark ? "h4 text-center mb-4 text-white" : "h4 text-center mb-4"}>
               { this.props.match.params.operation === "add" ?
-                  `Add record: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Add Record' }`
+                  `Add Contact: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Add Record' }`
                   :
-                  `Edit record: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Edit Record' }`
+                  `Edit Contact: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Edit Record' }`
               }
             </p>
-            <MDBContainer className="my-4">
+            <Container>
+              {/*<Row>*/}
               {record ?
                   (
-                      Object.keys(record).map((field, index) => (
-                          <>
-                            {/*{ index !== Object.keys( record ).length - 1 ?*/}
-                            {/*  (*/}
-                            {/*    <>*/}
-                            <MDBRow>
-                              <label htmlFor={field} className="grey-text">
-                                {columnHeadings[index].label}
-                              </label>
-                            </MDBRow>
+                        Object.keys(record).map((field, index) => (
+                            <Row className="m-sm-0 m-md-2">
+                              <Col sm={3}/>
+                              <Col sm={3}>
+                                <Label htmlFor={field} className="grey-text">
+                                  {columnHeadings[index].label}
+                                </Label>
+                              </Col>
 
-                            <MDBRow>
-                              {this.props.match.params.operation === "add" ?
-                                  (
-                                      <input
-                                          onChange={this.onChange}
-                                          // defaultValue={record[field]}
-                                          // readOnly={ field === 'vehicleID' || field === 'VIN' }
-                                          type="text"
-                                          name={field}
-                                          id={field}
-                                          className="form-control"
-                                      />
-                                  )
-                                  :
-                                  (
-                                      <input
-                                          onChange={this.onChange}
-                                          defaultValue={record[field]}
-                                          readOnly={field === 'vehicleID' || field === 'VIN'}
-                                          type="text"
-                                          name={field}
-                                          id={field}
-                                          className="form-control"
-                                      />
-                                  )
-                              }
-                            </MDBRow>
-                          </>
-                      ))
+
+                              {/*{this.props.match.params.operation === "add" ?*/}
+                              {/*    (*/}
+                              <Col sm={6}>
+                                <Input
+                                    onChange={this.onChange}
+                                    defaultValue={this.props.match.params.operation === "add" ? null : record[field]}
+                                    // readOnly={ field === 'vehicleID' || field === 'VIN' }
+                                    type="text"
+                                    name={field}
+                                    id={field}
+                                />
+                              </Col>
+                            </Row>
+                        ))
                   )
                   :
                   (
@@ -146,7 +125,8 @@ export class EditAdd extends Component {
                       </div>
                   )
               }
-            </MDBContainer>
+              {/*</Row>*/}
+            </Container>
             < MDBBtn
                 color="success"
                 type="submit">
@@ -158,7 +138,7 @@ export class EditAdd extends Component {
               Cancel
             </MDBBtn>
           </form>
-        </MDBContainer>
+        </Container>
     );
   }
 }

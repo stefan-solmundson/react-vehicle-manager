@@ -30,8 +30,14 @@ export class ShowTables extends Component {
     // console.log("this.props", this.props);
     // console.log("", );
 
+    let wWidth = window.outerWidth;
+
     return (
-      <div className="px-5">
+      <div className="px-sm-2 px-md-4 px-lg-5 py-lg-5"
+           style={{
+             minWidth: '400px',
+      }}
+      >
         <Form inline>
           <Input placeholder="search"
                  onChange={ ( event ) => this.setState( { searchStr: event.target.value }, () => {
@@ -44,10 +50,16 @@ export class ShowTables extends Component {
             Search
           </Button>
         </Form>
-
         <Table striped
                bordered
                dark={this.props.dark}
+               size={window.innerWidth < 1000 ? "sm" : "md"}
+               // className="sm"
+               // style={{
+               //   minWidth: '800px',
+               // }}
+               // resposive
+               // className={window.length < 1400 ? "text-danger" : "text-primary"}
         >
           <thead>
           <tr>
@@ -91,19 +103,6 @@ export class ShowTables extends Component {
                   >
                     Delete
                   </Button>
-
-                  { dataArrayName === "vehicles" &&
-                  <Button className="btn btn-blue-grey m-1"
-                          size="md"
-                    // onClick={ () => { console.log(this.props.printDetails( record ))} }
-                          onClick={ () => {
-                            this.setState( { printDetailsString: this.props.printDetails( record ) } )
-                          } }
-                    // onClick={ () => {this.printDetailsString = this.props.printDetails( record )} }
-                  >
-                    Print Details
-                  </Button>
-                  }
 
                 </td>
                 {
