@@ -1,3 +1,19 @@
+## Documentation
+## Features
+*Most to Least Important
+
+### Add Contact
+
+### Delete Contact
+
+### Edit Contact
+
+### Search Contacts
+
+### Sort Contacts By Field
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
