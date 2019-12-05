@@ -47,20 +47,20 @@ export class EditAdd extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    // no field can be blank
-    Object.keys(this.state.record).map((field, index) => {
-      if (this.state.record[field] == null) {
-        alert(`Sorry, your record's ${this.props.columnHeadings[index]} cannot be blank.`);
-      }
-      // console.log(field + " was not blank.")
-    });
+    // // no field can be blank
+    // Object.keys(this.state.record).map((field, index) => {
+    //   if (this.state.record[field] == null) {
+    //     alert(`Sorry, your record's ${this.props.columnHeadings[index]} cannot be blank.`);
+    //   }
+    //   // console.log(field + " was not blank.")
+    // });
 
     if (this.props.match.params.operation === "add") {
-      // The record-types ID Field can NOT be a duplicate of another
-      if (this.props.data.find(element => element[this.props.recordIdFieldName] === this.state.record[this.props.recordIdFieldName]))
-        return (alert("Sorry, your record must have a unique " +
-            this.props.dataArrayName.charAt(0).toUpperCase() + this.props.dataArrayName.substring(1, this.props.dataArrayName.length - 1) + " ID" +
-            "."));
+      // // The record-types ID Field can NOT be a duplicate of another
+      // if (this.props.data.find(element => element[this.props.recordIdFieldName] === this.state.record[this.props.recordIdFieldName]))
+      //   return (alert("Sorry, your record must have a unique " +
+      //       this.props.dataArrayName.charAt(0).toUpperCase() + this.props.dataArrayName.substring(1, this.props.dataArrayName.length - 1) + " ID" +
+      //       "."));
 
       // add the record to the data-array
       this.props.addRecord(this.state.record, this.props.recordIdFieldName, this.props.dataArrayName, () => this.props.history.push(`/${this.props.dataArrayName}/`));
@@ -75,6 +75,7 @@ export class EditAdd extends Component {
 
   render() {
     const {record} = this.state;
+    console.log(record);
     const {columnHeadings} = this.props;
     // console.log("this.props", this.props);
     // console.log("record", record);
@@ -84,9 +85,11 @@ export class EditAdd extends Component {
           <form onSubmit={this.onSubmit}>
             <p className={this.props.dark ? "h4 text-center mb-4 text-white" : "h4 text-center mb-4"}>
               { this.props.match.params.operation === "add" ?
-                  `Add Contact: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Add Record' }`
+                  // `Add Contact: ${record[this.props.givenName] ? record[this.props.givenName] : 'Add Record' }`
+                  "Add Contact:"
                   :
-                  `Edit Contact: ${record[this.props.recordIdFieldName] ? record[this.props.recordIdFieldName] : 'Edit Record' }`
+                  // `Edit Contact: ${record[this.props.givenName] ? record[this.props.givenName] : 'Edit Record' }`
+                  "Edit Contact:"
               }
             </p>
             <Container>
@@ -94,6 +97,8 @@ export class EditAdd extends Component {
               {record ?
                   (
                         Object.keys(record).map((field, index) => (
+                            <React.Fragment>
+                            {index !== Object.keys(record).length-1 &&
                             <Row className="m-sm-0 m-md-2">
                               <Col sm={3}/>
                               <Col sm={3}>
@@ -108,7 +113,8 @@ export class EditAdd extends Component {
                               <Col sm={6}>
                                 <Input
                                     onChange={this.onChange}
-                                    defaultValue={this.props.match.params.operation === "add" ? null : record[field]}
+                                    // defaultValue={this.props.match.params.operation === "add" ? null : record[field]}
+                                    defaultValue={record[field]}
                                     // readOnly={ field === 'vehicleID' || field === 'VIN' }
                                     type="text"
                                     name={field}
@@ -116,6 +122,8 @@ export class EditAdd extends Component {
                                 />
                               </Col>
                             </Row>
+                            }
+                            </React.Fragment>
                         ))
                   )
                   :

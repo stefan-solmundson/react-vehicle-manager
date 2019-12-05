@@ -129,7 +129,7 @@ export class App extends Component {
       // get index of vehicle
       const _indexOfRecord = _data.findIndex(element => element[recordIdField] === record[recordIdField]);
       _data[_indexOfRecord] = record;
-      this.setState({[dataArrayName]: _data}, this.updateOdometer(record, navigateBack))
+      this.setState({[dataArrayName]: _data}, navigateBack)
     }
   };
 
@@ -141,9 +141,13 @@ export class App extends Component {
    * @param navigateBack - A function that navigates to the page before this function was called.
    */
   addRecord = (record, recordIdField, dataArrayName, navigateBack) => {
+    let highestContactID = 0;
+    this.state[dataArrayName].map(element => element.contactID > highestContactID ? highestContactID = element.contactID : null );
+    record.contactID = (highestContactID + 1).toString();
+    console.log(record);
     if (this.offline === false) {
       // Creates the firebase record
-      firebase.firestore().collection(dataArrayName).doc(record[recordIdField]).set(record)
+      firebase.firestore().collection(dataArrayName).doc(highestContactID).set(record)
           .then(function () {
             console.log("Document successfully written!");
           })
@@ -158,7 +162,7 @@ export class App extends Component {
       _data.push(record);
       // console.log("_data", _data);
       // console.log("record", record);
-      this.setState({[dataArrayName]: _data}, this.updateOdometer(record, navigateBack));
+      this.setState({[dataArrayName]: _data}, navigateBack);
     }
   };
 
@@ -319,7 +323,7 @@ export class App extends Component {
                             columnHeadings={this.state[`${page}Headings`]}
                             data={this.state[page]}
                             dataArrayName={page}
-                            recordIdFieldName={"givenName"} // the UNIQUE ID Field for the record's type
+                            recordIdFieldName={page.substr(0, page.length-1) + "ID"} // the UNIQUE ID Field for the record's type
                             deleteRecord={this.deleteRecord}
                             sortArrayByField={this.sortArrayByField}
                             searchArray={this.searchArray}
@@ -339,7 +343,7 @@ export class App extends Component {
                             columnHeadings={this.state[`${page}Headings`]}
                             data={this.state[page]} // this is so that the vehicle can be retrieved by it's vehicleID in the URL
                             dataArrayName={page}
-                            recordIdFieldName={"givenName"} // the UNIQUE ID Field for the record's type
+                            recordIdFieldName={page.substr(0, page.length-1) + "ID"} // the UNIQUE ID Field for the record's type
                             editRecord={this.editRecord}
                             addRecord={this.addRecord}
                             dataDefaultRecord={this.state[`${page}DefaultRecord`]} // this is for the add form

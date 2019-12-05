@@ -97,7 +97,7 @@ export class ShowTables extends Component {
                           className="m-1"
                           onClick={ () => {
                             if ( window.confirm(
-                              `Are you sure you want to delete the ${ dataArrayName.substring( 0, dataArrayName.length - 1 ) }: ${ record[ recordIdFieldName ] }?`
+                              `Are you sure you want to delete the ${ dataArrayName.substring( 0, dataArrayName.length - 1 ) }: ${ record.givenName } ${ record.familyName }?`
                             ) ) this.props.deleteRecord( record, recordIdFieldName, dataArrayName )
                           } }
                   >
@@ -107,7 +107,11 @@ export class ShowTables extends Component {
                 </td>
                 {
                   Object.keys( record ).map( key =>
-                    <td>{ record[ key ] }</td>
+                      <React.Fragment>
+                        {key !== this.props.recordIdFieldName &&
+                        <td>{record[key]}</td>
+                        }
+                      </React.Fragment>
                   )
                 }
               </tr>

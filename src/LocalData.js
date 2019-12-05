@@ -17,6 +17,7 @@ export const localData = {
       email:"steve.johnson@gmail.com",
       mobile:"1111222233",
       homePhone:"",
+      contactID: "1",
     },
     {
       givenName:"Hilary",
@@ -26,6 +27,7 @@ export const localData = {
       email:"hilary.kirk@gmail.com",
       mobile:"2222333344",
       homePhone:"",
+      contactID: "2",
     },
     {
       givenName:"Jeffery",
@@ -35,15 +37,16 @@ export const localData = {
       email:"jeff.yota@gmail.com",
       mobile:"3333444455",
       homePhone:"",
+      contactID: "3",
     },
   ],
   contactsHeadings:[
     {
-      label:"GivenName",
+      label:"Given Name",
       field:"givenName",
     },
     {
-      label:"FamilyName",
+      label:"Family Name",
       field:"familyName",
     },
     {
@@ -51,7 +54,7 @@ export const localData = {
       field:"company",
     },
     {
-      label:"ContactType",
+      label:"Contact Type",
       field:"contactType",
     },
     {
@@ -63,7 +66,7 @@ export const localData = {
       field:"mobile",
     },
     {
-      label:"HomeNumber",
+      label:"Home Number",
       field:"homePhone",
     },
   ],
@@ -75,5 +78,6 @@ export const localData = {
     email:"amy.bjorne@gmail.com",
     mobile:"0000111122",
     homePhone:"44448888",
+    contactID: "0",
   },
 };
