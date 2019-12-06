@@ -104,9 +104,9 @@ export class App extends Component {
 
   /**
    * Edits/Modifies a record/document in a dataArray/collection
-   * @param record - the record/document (vehicle/booking/service/etc.)
-   * @param recordIdField - the records uniqueID field/key (vehicleID/serviceID/bookingID/et
-   * @param dataArrayName - the dataArray/collection (vehicles/services/bookings/etc.)
+   * @param record - the record/document (contact)
+   * @param recordIdField - the records uniqueID field/key (contactID)
+   * @param dataArrayName - the dataArray/collection (contacts)
    * @param navigateBack - A function that navigates to the page before this function was called.
    */
   editRecord = (record, recordIdField, dataArrayName, navigateBack) => {
@@ -135,15 +135,15 @@ export class App extends Component {
 
   /**
    * Adds a record/document to a dataArray/collection
-   * @param record - the record/document (vehicle/booking/service/etc.)
-   * @param recordIdField - the records uniqueID field/key (vehicleID/serviceID/bookingID/et
-   * @param dataArrayName - the dataArray/collection (vehicles/services/bookings/etc.)
+   * @param record - the record/document (contact)
+   * @param recordIdField - the records uniqueID field/key (contactID)
+   * @param dataArrayName - the dataArray/collection (contacts)
    * @param navigateBack - A function that navigates to the page before this function was called.
    */
   addRecord = (record, recordIdField, dataArrayName, navigateBack) => {
     let highestContactID = 0;
     this.state[dataArrayName].map(element => element.contactID > highestContactID ? highestContactID = element.contactID : null );
-    record.contactID = (highestContactID + 1).toString();
+    record.contactID = (Number(highestContactID) + 1).toString();
     console.log(record);
     if (this.offline === false) {
       // Creates the firebase record
@@ -168,9 +168,9 @@ export class App extends Component {
 
   /**
    * Deletes a record/document from a dataArray/collection
-   * @param record - the record/document (vehicle/booking/service/etc.)
-   * @param recordIdField - the records uniqueID field/key (vehicleID/serviceID/bookingID/etc.)
-   * @param dataArrayName - the dataArray/collection (vehicles/services/bookings/etc.)
+   * @param record - the record/document (contact)
+   * @param recordIdField - the records uniqueID field/key (contactID)
+   * @param dataArrayName - the dataArray/collection (contacts)
    */
   deleteRecord = (record, recordIdField, dataArrayName) => {
     // console.log("dataArrayName", dataArrayName);
@@ -195,14 +195,14 @@ export class App extends Component {
   /**
    * Sorts a data-table by the specified field
    * can do both ascending & descending order
-   * @param dataArrayName
-   * @param field - the field to be sorted by in descending order (cannot be switched to ascending)
+   * @param dataArrayName - the dataArray/collection (contacts)
+   * @param field - the field to be sorted by in descending order (cannot be switched to ascending atm)
    * @param ascendingOrder - true if ascending order is desired, false for descending order
    */
   sortArrayByField = (dataArrayName, field, ascendingOrder = true) => {
     let _dataArray = this.state[dataArrayName];
 
-    console.log(_dataArray);
+    // console.log(_dataArray);
 
     _dataArray.sort(function (aa, bb) {
       // let aaa = 5;
@@ -211,27 +211,27 @@ export class App extends Component {
       let bbb = bb[field];
       aaa = typeof (aaa) === "string" ? aaa.toUpperCase() : aaa;
       bbb = typeof (bbb) === "string" ? bbb.toUpperCase() : bbb;
-      console.log(aaa);
-      console.log(bbb);
+      // console.log(aaa);
+      // console.log(bbb);
       if (aaa < bbb) {
-        console.log(-1);
+        // console.log(-1);
         return -1;
       }
       if (aaa > bbb) {
-        console.log(1);
+        // console.log(1);
         return 1;
       }
       // aaa.toUpperCase();
-      console.log(aaa);
-      console.log(bbb);
-      console.log(typeof (bbb));
+      // console.log(aaa);
+      // console.log(bbb);
+      // console.log(typeof (bbb));
 
     });
 
     if (!ascendingOrder) {
       _dataArray = _dataArray.reverse();
     }
-    console.log(_dataArray);
+    // console.log(_dataArray);
     this.setState({[dataArrayName]: _dataArray,});
     // return(!ascendingOrder);
   };
@@ -240,7 +240,7 @@ export class App extends Component {
    * Searches through a data-table presenting positive search results first,
    * leaving the negative search results below the positive ones
    * non-case sensitive search
-   * @param dataArrayName
+   * @param dataArrayName - the dataArray/collection (contacts)
    * @param searchStr - the string being used for the search
    */
   searchArray = (dataArrayName, searchStr) => {
