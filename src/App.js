@@ -16,6 +16,7 @@ import {Table, Button, Input, Form, FormGroup} from 'reactstrap';
 import {localData} from './LocalData';
 
 import './App.css';
+import Help from "./components/Help/Help";
 
 export class App extends Component {
   // state = {
@@ -144,7 +145,7 @@ export class App extends Component {
     let highestContactID = 0;
     this.state[dataArrayName].map(element => element.contactID > highestContactID ? highestContactID = element.contactID : null );
     record.contactID = (Number(highestContactID) + 1).toString();
-    console.log(record);
+    // console.log(record);
     if (this.offline === false) {
       // Creates the firebase record
       firebase.firestore().collection(dataArrayName).doc(highestContactID).set(record)
@@ -288,6 +289,12 @@ export class App extends Component {
           <body className={this.state.dark ? "bgDark" : ""}>
           {/*<Button onClick={ () => this.sortArrayByField( "vehicles", "vehicleID" ) }>*/}
           {/*<Button onClick={ () => console.log(window.innerWidth) }>*/}
+          {/*<Button onClick={ () => {*/}
+          {/*  let nameRegex = /^[A-Za-z0-9][A-Za-z0-9'_-]+$(?:[ _][A-Za-z0-9'_-]+)*$/;*/}
+          {/*  let str = "dffs_ffgfgd";*/}
+          {/*  let result = str.match(nameRegex);*/}
+          {/*  console.log(result);*/}
+          {/*} }>*/}
           {/*  test Sort*/}
           {/*</Button>*/}
           <div className="text-center">
@@ -301,7 +308,7 @@ export class App extends Component {
 
 
             <Route
-                exact path={["/", "/contacts/"]}
+                exact path={["/", "/contacts/", "/help/"]}
                 render={
                   props =>
                       <Home
@@ -309,6 +316,16 @@ export class App extends Component {
                           pages={this.state.pages}
                       />
                 }
+            />
+            <Route
+              exact path="/help/"
+              render={
+                props =>
+                  <Help
+                    {...props}
+                    dark={this.state.dark}
+                  />
+              }
             />
           </div>
 
@@ -347,7 +364,9 @@ export class App extends Component {
                             editRecord={this.editRecord}
                             addRecord={this.addRecord}
                             dataDefaultRecord={this.state[`${page}DefaultRecord`]} // this is for the add form
+                            dataPlaceholderRecord={this.state[`${page}PlaceholderRecord`]} // this is for the add form
                             dark={this.state.dark}
+                            contactsValidFieldsRecord={this.state.contactsValidFieldsRecord}
                         />
                   }
               />

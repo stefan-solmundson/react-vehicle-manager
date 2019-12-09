@@ -6,31 +6,14 @@ import EditAdd from "../EditAdd/EditAdd";
 import '../../App.css';
 
 export class ShowTables extends Component {
-  // printDetailsString = "";
   state = {
     printDetailsString: undefined,
     searchStr: "",
-    // printDetailsString: "test",
   };
-
-  componentDidMount() {
-    // console.log("ShowVehicle.js's props: *below");
-    // console.dir(this.props);
-  }
-
 
   render() {
     const { columnHeadings, data, dataArrayName, recordIdFieldName, history } = this.props;
-
-    // let stuff;
-    // let _printDetails = "test";
-    // console.log(_printDetails);
-    // console.log(this.printDetailsString);
-    console.log( this.state.printDetailsString );
     // console.log("this.props", this.props);
-    // console.log("", );
-
-    let wWidth = window.outerWidth;
 
     return (
       <div className="px-sm-2 px-md-4 px-lg-5 py-lg-5"

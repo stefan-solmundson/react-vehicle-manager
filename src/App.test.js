@@ -89,45 +89,6 @@ describe("checks deleteRecord() removes exactly 1 record.", () => {
   });
 });
 
-// // editRecord
-// describe("checks editRecord() can modify the record's vehicleID.", () => {
-//   tstate.pages.map((dataArrayName) => {
-//     it("changes the record's vehicleID to 'Test Vehicle ID'.", () => {
-//       let _recordIdFieldName = dataArrayName.substr(0, dataArrayName.length - 1) + "ID";
-//       let _record = appy.state[dataArrayName + "DefaultRecord"];
-//       // expect(_record).toStrictEqual();
-//       // vehicleID & _recordIdFieldName are REQUIRED, all other properties are made NULL
-//       // vehicleID for updateOdometer(), which is inside of editRecord()
-//       // _recordIdFieldName is require because this is a property in editRecord()
-//       _record[_recordIdFieldName] = appy.state[dataArrayName][0][_recordIdFieldName];
-//       _record.vehicleID = appy.state[dataArrayName][0].vehicleID;
-//       Object.keys(_record).map(property => {
-//         if (!(property === _recordIdFieldName || property === "vehicleID")) {
-//           _record[property] = null;
-//         }
-//       });
-//       // checks the first record of dataArrayName HAS NOT been changed yet
-//       expect(appy.state[dataArrayName][0]).not.toStrictEqual(_record);
-//       // console.log(_record);
-//       // console.log(appy.state[dataArrayName][0]);
-//       appy.editRecord(
-//           _record,
-//           _recordIdFieldName,
-//           dataArrayName,
-//           null
-//       );
-//       // checks the first record of dataArrayName HAS been changed yet
-//       expect(appy.state[dataArrayName][0]).toStrictEqual(_record);
-//
-//       // DOESN'T WORK???
-//       // WHY DOES REFRESHING THE APP ONLY WORK HERE INSIDE OF it() ???!!!
-//       // recreates the App instance "appy", THUS the constructor runs again the STATES are reset
-//       app = shallow(<App/>);
-//       appy = app.instance();
-//     });
-//   });
-// });
-
 // sortArrayByField
 describe("checks sortArrayByField correctly sorts.", () => {
   // tstate.contacts.map(contact => {
@@ -176,6 +137,34 @@ describe("checks searchArray() can find a contact.", () => {
     // recreates the App instance "appy", THUS the constructor runs again the STATES are reset
     app = shallow(<App/>);
     appy = app.instance();
+  });
+});
+
+// editRecord
+// this test does NOT actually work, because the state can be modified directly from this test
+// I'm not sure why... React is weird...
+describe("checks editRecord() can modify the record's vehicleID.", () => {
+  tstate.pages.map((dataArrayName) => {
+    it("changes the record's vehicleID to 'Test Vehicle ID'.", () => {
+      let _recordIdFieldName = dataArrayName.substr(0, dataArrayName.length - 1) + "ID";
+      let _record = appy.state[dataArrayName + "DefaultRecord"];
+      _record[_recordIdFieldName] = appy.state[dataArrayName][0][_recordIdFieldName];
+      appy.editRecord(
+          _record,
+          _recordIdFieldName,
+          dataArrayName,
+          null
+      );
+      // checks the first record of dataArrayName HAS been changed yet
+      expect(appy.state[dataArrayName][0]).toStrictEqual(_record);
+
+
+      // DOESN'T WORK???
+      // WHY DOES REFRESHING THE APP ONLY WORK HERE INSIDE OF it() ???!!!
+      // recreates the App instance "appy", THUS the constructor runs again the STATES are reset
+      app = shallow(<App/>);
+      appy = app.instance();
+    });
   });
 });
 

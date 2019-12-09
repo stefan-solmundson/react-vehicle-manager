@@ -10,23 +10,22 @@ export class Home extends Component {
   state = {};
 
   componentDidMount() {
-    // console.log("Home.js's props: *below");
+    // console.log("Help.js's props: *below");
     // console.dir(this.props);
   }
 
   render() {
+    let pages = [...this.props.pages, "help"];
     // const { columnHeadings, data, history } = this.props;
     // console.log( "this.props", this.props );
     // console.log( "columnHeadings", columnHeadings );
     // console.log( "data", data );
     // console.log("", );
-    // console.log("", );
-    // console.log("", );
-    // console.log("", );
     return (
 
         <div>
-          { this.props.pages.map( ( page, index ) =>
+          {/*{ this.props.pages.map( ( page, index ) =>*/}
+          { pages.map( ( page, index ) =>
               <React.Fragment>
                 <Link className={index % 2 ? "btn btn-deep-purple m-2" : "btn btn-purple m-2"}
                       to={ {
